@@ -1,0 +1,177 @@
+Node.js (release on may 27 2009, version 16.4, written in c, c++, javascript)
+-Node.js is an open source server environment, Node.js uses JavaScript on the server,Node.js uses asynchronous programming
+-Node.js eliminates the waiting, and simply continues with the next request. in others waiting to reads the file.
+-Node.js runs single-threaded, non-blocking, asynchronous programming, which is very memory efficient
+What Can Node.js Do?
+-Node.js can generate dynamic page content
+-Node.js can create, open, read, write, delete, and close files on the server
+-Node.js can collect form data
+-Node.js can add, delete, modify data in your database
+-Node.js use chrome V8 engine to execute code.
+-it is mostly similar with js but little difference, and in node.js we can connect to the database whcih can not possible in js.
+-nodejs use mostly for api(for web, android, ios etc), we can make website but rarely use
+-Node.js super fast (chat application use node.js)
+-node run serverside but js broweser side
+
+-Node run command is node .\filename.ts
+
+Installation
+-nodejs.org download Recomended for Most users(node -v, npm -v)
+-write code(script with commandline - not using )
+	another way make folder and file (using)
+
+	-by cmd will do the program for node  (not use ful way)
+		-cmd type node
+		-console.log("like");
+	-we can create a folder inside this will create a file and then (code . - by click in cmd will got to vscode if installed)
+		we can add, simple program we can write
+		console.log('dev');
+		-js and node console both not same similar only and node console just debuggint (console.warn, console.log, console.error
+-basic js need to know(if-else loop, for while loop, switch case, array)
+-from another file to parent file how to get data.
+	-inside child file we need to mention module.exports = {x:2, y:3}; inside it we can make function as well
+	-inside parent file need to mention let _filename =  require('./filename'); console.log(_filename);
+	-filter we are using for array it will direct do the loop and print the items inside array.
+	-using filter we can return the value with condition.
+
+-Core Module (this one need to know this is same for all programing language like php, python, c etc) another is external module
+	-core module 2 type global module and non-global module(both are similar little difference)
+	-some basic things already available in every programin language ex - how to connect with database, api call etc, filesystem this is called core module
+	-global module(console) no need to import and non-global(filesystem or fs) module need to import
+	-so for filesystem need to use let fs = require('fs'); fs.writeFileSync("hello.txt", "something inside hello file"); here hello.txt file will generate and inside it that text
+	-we can use  __dirname and __filename will display filename and directory name.
+	-filesystem is a huge package so if we want a single part in that case we can import  - let fs = require('fs').writeFileSync; then we can use that particular part.
+-Basic server (for this need to import http) (http work is inside the server handle request and response)
+	-will use here createServer which take whole function as a parameter.
+	- .listen(3000) we use this one to display in localhost 3000 port
+	-1st parameter inside arrow function is request and 3nd parameter is response. so response need to end by res.end()
+	-even we can send html
+-package.json (as like angular in nodejs it carry all the versions of packages and commands for built and run the program etc (it keeps project coding details)
+	-cmd is npm init to initialise the package.json file (before generate file it will ask few questions mention)
+	-all the installed packages version will visible inside node_module folder
+	-here package.json file if we delete project will not run so careful.
+	-node.js is single threaded and it run single command at a single time.
+	
+	-if node_modules folder delete then need to use npm install then node_modules will auto download else will get error if we run program	
+	-so in git no need to push node_modules for it we can create .gitignore file and inside it we can mention /node_modules git will ignore automaticly
+-Nodemon(time saving module) (it continues run the program if we not use then every time we need to use node .\filename.js in cmd) npm i nodemon -g
+	-post install in cmd insted of node .\filename.js we need to use nodemon .\filename.js the it will run (if will get error during run we can open new cmd or run as adminstrator so will work fine)
+-Nodejs is an async(multiple program run if 1st one take 1mnt then it will not wait for finish it will continue 2nd one and continue) language
+
+-Make a simple API(will create a server and input some static data will not connect to database but this api will work with angular react etc.
+	-first will use http in require, then will createServer and listen in port 3000 or any port and will writeheader with res because will send
+	-so inside writeHead(200, {json data}) 1st parameter is response code and 2nd parameter datatype(content type - json or something).200 means status code
+	 then res.write(JSON.strigify({name:'debu'})) here will mention body then will do res.end();
+	-if we want to mention html in webpage we can give content type: 'text/html'
+	-we can check at google using localhost we can see json data even in postman we can check the data response
+	
+	-from other file we can do the same like we can create a data.js file there we can mention a lot of data that we can do in createServer.
+	-if multiple data then by array we can create. [{}, {}]
+	-by adding postman extension in crome we can check localhost data
+
+-we can give inputs in cmd 
+	-process.argv is an object by which we can do.(process if we do console will get lot of things)
+	-process argv having 2 output one if we want to add the 3rd parameter need to input
+	-we can create a file by fs. (fs.writeFileSync(input[2]))
+	-for delete a file by fs (fs.unlinkSync(input[2]))
+-show file list
+	-we can create delete, read a file, also we can create multiple files at a single time.
+	-path is a module need to import to get the directory path using dirpath ='path.join(__dirname)'
+	-inside for loop fs.writeFileSync(dirpath+`/hello${i}.txt`, "file created")
+	-to read the file use fs.readdir(dirpath,(err, files)=>{}) will get file name in array
+	-if we want to get outside folder files then it can't cause this file is an environment which can not access.
+-crud with file system
+	-if we want to create a file inside another folder aprt from root folder that case need to use path
+	-for create using writeFileSync
+	-for read using readFile(filepath, 'utf8', (err, item)=>{})
+	-for update using appendFile(filepath, 'text...write',(err)=>{}) 
+	-to rename using fs.rename(filepath, updated filename with path, (err)=>{})
+	-to delete using fs.unlinkSync(filepath);
+	
+	Buffer is a temporary memory location in nodejs.
+-Asynchronouse in nodejs (not wait to complete the process will go for next process)
+	-asychronouse is helpfull but it have a drawback that if we have set time out and console it then it will take time might will not get the actual result
+	-to avoid this we can use promise or asynch await.
+	-promise return 2 value in function resolve, reject.
+
+Architecture of nodejs-
+	callstack(mandatory), nodeapi(not mandatroy to run), callback queue(not mandatroy to run) - (this whole process is called event loop)
+	-in callstack 1st main function create and again inside it all other function call then execute accordingly.
+	-setTimeout comes to nodeapi because setTimeout is from c++ which inherit to nodejs.
+	-callback queue comes post the timelimit.
+
+Express js(mandatory to learn it is the framework of nodejs) (as angular framework of javascript expressjs is also same)(easy to learn)
+we can create a webpage using html, routing add etc.
+Template engine can install ejs template package from npm for the static webpage also we can create dynamic page
+Middleware(apply in routes only)(it having funcation which work with routes, we can access request and response)
+Route level Middleware(apply middleware with 2 or 3 route out of 100 route from different file)
+
+
+MongoDB(this is a database)(it is non sql database here select * from not using)
+-install mongodb msi file type - we can check its version in cmd mongo
+-it store data in collection, not like table as like object format it store data, collection don't have row and colomns.
+-sql is structured for coloumns and rows but mongodb have no structure.
+	-mongodb cmd - show dbs(to display how may database available.
+		-use youtube (to create a new database and inside it must update collection ) cmd db.createCollection('videos'). videos is the collection for youtube.
+		-to display collections (show collections)
+		-db.videos.drop() to delete the collection
+		-db.dropDatabase() to delete he database
+		-use admin to go to admin
+
+CRUD operations in mongoDB
+-will create a database named e-comm and will create products as collection
+-insert data by cmd or from mongodb compass (prefer to insert from mongodb compass)
+	-use e-comm, then db.products.insertOne({name:"dev", age:25}) to insert single data . mondo db generate id own.
+	-from mongodb compass use inser document if you have alread data in another file then use insert file.
+	-db.products.find() to see al data from cmd
+	-update db.products.updateOne({name:"c31"},{$set:{brand:'oppo'}})
+	-delete db.products.deleteOne({brand:"poco"})
+-connect node with mongoDB
+	-to establish the connection between node and mongodbuse the cmd npm i mongodb.
+	-will import mongodb by require and we choose one library of it MongoClient
+	-will create a path to inform node that where mongodb locate. url = "mongodb://localhost:27017";
+	-will pass the url inside mongoclient and save inside variable
+	-client.connect() used to establish connect with server and this return promise type for that await need to use. to use await we need to made the funcation as async type.
+	-now will do db access and then collection access then will put in response variable and mention await to handle promise then will console it. await collection.find({}).toArray()
+	-console the response we can see the result in cmd
+	-multiple data base we can connect with node.
+-Read data from MongoDb
+	-to read a particular data we can use - collection.find({brand:'nokia'}).toArray()
+	-toArray return promise type to resove we need to use .then.
+	-another way of to get data from server create another file or async await can use with arrow func.
+	-will create a file mongodb.js inside it will mention till collection return then in the app file will access this folder by require.
+
+-insert data in mongodb from nodejs
+	-will create another file insert.js for insert operation
+	-db.insert we can do to insert data in database and in promise it return 3 parameter we can display the messsage that if acknowledge then print success.
+	-we can insert multiple object as array type
+-Update data in mongodb from nodejs
+	-will create another file update.js for update.
+	-db.updateOne use for single record update and if there is multiple record of same match need to update all we can use db.update().
+-Delete data in mongodb from nodejs
+	-will create another file delete.js for delete operation
+	-to delete we use db.delete() for multiple delete for same match then deleteMany()
+
+-Dynamic api with MongoDB (get,post,put,delete)
+	GET API
+	-will create a file api.js where we will do all the operations
+	-will impliment express because without this api can not possible, to use express need to install npm install express --save
+	-get() here it means create a routing file
+	-inside this we can use the method to get the data from mongodb.
+	-get method can not pass body it possible only in post. in get method we can pass query params.
+
+	POST API
+	-same url we can give to both post and get method
+	-so in post method need to check via postman is it working or not then will check for dummy data.
+	-to check that dummy data receive at nodejs for that need to use middleware express.json(bodyparser)(bodyparser used before 4.6 version of express)
+	
+	PUT API
+	-here will do put method and here also will get dummy data from postman and will use req.body and before that express.json will use.
+	-from postman if we want to send data through url then need to use a variable name in node and insted of body at name we can use params
+	
+	DELETE API
+	-for delete we need id of the row so for that we will use mongodb object instance because that id is in object format so.
+
+
+
+
