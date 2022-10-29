@@ -1,0 +1,798 @@
+password - 2BFF1EC3197B0FF723949E5DF970D7F197DB599763B5393B6D5311DCB9AA8938
+randomuser - for free api
+Angular material use (https://material.angular.io/)
+nodejs and mongo express(to develop API)preferable
+ 
+1.Introduction(09/05/22)
+-what is angular?  (14th sep 2016)
+-when we are developing an application 2 type scripting using 1.clientside scripting(userside execute) 2.serverside scripting(data goes from server side to user)
+-now avarage loading time is 8sec.
+-library means all the codes already written in a better way by someone which we need to import that library to access.(javascript have a lot of library)
+-angular js(angular 1) is a library of js developed by google (it is not supporting oops concept, js also not supporting)
+-angular 2 is a framework launched by google (framework have its own guidelines which we need to follow to develop and app, it have a lot of own library)(here js removed and introduced ts(support oops concept))
+-angular can use clientside scripting as well as serverside scripting so for this reason angular apps work fast as comper to other
+-html, dom(after writing code we will do randering in browser that html code file called dom), css, typescript, js
+-Building blocks of an angular application (modules, components, templates, metadata, data binding, directives, services, dependency injection) with out these all we can not creat an angular application
+-basic architecture of an angular
+-data binding(communtion between templete file to component file)
+-services(it use for reuse the functionlity)
+-workflow of angular app/how to bootstrap angular app(main.ts(bootstrapModule(AppModule(AppCompoennt(templateUrl file path load(app-root(index.html file load)))))) for this reason it is called single page application
+-directive(change the behaviour of a element ex-ngif, ngfor etc)with out * we can use only ngIf  angular use *ngIf 
+-dependency injection(it used in services)
+
+2.Angular version (angular team always dedicated to increase perfomance of angular)
+-why angular 3 not released? (google introduces higher version library in angular2 only so they skip angular3 version) below details follow
+	@angular/core v2.3.0
+	@angular/complier v2.3.0
+	@angular/compiler-cli v2.3.0
+	@angular/http v2.3.0 
+	@angular/router v3.3.0 (google wrongly introduced router in angular 2 so they not released angular 3 to create unnecessary confusion so they skip angular 3 and introduced angular 4)
+- angular 4
+	under the hood changes (size of the application code after uploading in server that size reduced 60% from the original size) in this way fast loading of application
+	faster compilation
+	better bug fixes alert
+	typescript 2.1 and 2.2 compatibility (earlier 1.8 supported but now 2.1 can use)
+	ngif/else (else clause also can use)
+	email validation (no need to write pattern)
+-Angular 5
+	HTTPClient API(client to server communtion happen by it)(crud operation done by using http)
+	in angular 8 they removed http before angular 5 http was working and 5, 6, 7 also working
+	multiple export aliases
+	Pipe (normal data to user requiremnt format data)(data, currency, number)
+	lambda support
+	build optimizer
+	improved compiler(faster compilation)typescript 2.3 used
+-Angular 6 (4th may 2018)
+	Update angular cli (ng-update)
+	update cdk, component development kit (angular material library, support responsive)
+	update angular material
+	usage of RxJS, a reactive js library (heart of angular)
+	angular element(defining a new html element)
+	multiple validators(in form name size limit, mobile number limit etc)
+	tree shaking of services(unwanted code remove)
+-Angular 7 (oct 18th 2018)
+	how to upgrade to angular 7(google team removed angular 6 wala ng-update)
+	angular 7 cli prompts(routing and css add option added in angular 7 before that automatic file created and added routing)
+	application performane
+	documentation updates
+	dependency updated
+	drag and drop
+	virtual scrolling
+	improved accessibility of selects
+	partner launches
+	angular elements
+	angular do-bootstrap
+-Angular 8(may 28th 2019)
+	Angular version
+	angular 8 overview
+	upgrading to angular 8
+	dynamic imports
+	differential loading by default
+	bye bye @angularhttp
+	viewchild and contentchild
+	ivr randering enging(before this version used view enging for compiler) (ivr randering engine more minimize the code)
+-Sementic versioning 13.0.0(now a days software version are in 3 parts (1st(13) part major, 2nd(0) minor, 3rd(0) patch (if changes in major then developer assistance needed, if changes in minor no developer assistance needed, if changes in patch level then bug fix happened no need developer assistance)
+-if application updated need in major from 13 to 15 we need to go through 14 but if changes in minor and patch level we can direct update
+-Angular release frequency
+	A major release every 6 months
+	1-3 minor release for each major release
+	A patch release almost every week (bug fix)
+-supprt policy
+	supported for 18 months
+	first 6 month active support
+	rest 12 month long term support 
+3.Angular Install process(14/05/22)
+	nodejs need to install from offcial site(lts version need to download not current version)(need to open node.js cmd prompt to check version node -v)
+	npm (node package manager) auto install once we install nodejs (version check - npm -v)
+	angular/cli (npm install -g @angular/cli) (to check version ng v)
+-if we have installed from starting and facing issue then we need follow steps to avoid the error
+ 	go to controlpanel uninstall nodejs then go C drive-users-appdata-roaming then delete npm and npmcache then follow the above process then angular work finely
+-what is nodejs? (it is a serverside platform built on google chrome js engine)
+-why does angular2 and above need node.js?(when we creating angular project there multiple packages are installing automatically, to manage all package npm needed. npm is a part of node.js so for that reason we are installing node.js and automatic npm also available with it.)
+-@angular/cli work is (when we crating a component or module all that inside coding part already done by angular cli, else we will face the proble to add all files manually so to manage angular cli npm need polyfile and broweser file
+-npm worlds largest software registry, 800000 code packages, it is open source, developers use to share software
+-how to crate a project?
+	use cmd - ng new filename then cd filename then ng serve
+-Building the application
+	use cmd - ng build <project> only 5 file create after running the cmd (main.js, polyfiles.js, styles.js, runtime.js, vendor.js)
+	main.js - the bulk of our angular application
+	runtime.js - contains all files(component, module, services, pipes etc) all functional files will go
+	polyfills.js - the things needed to let angular work in older browsers (it have zone.js library by which it will support all platform like google mozila, explore with all version)
+	vendor.js - the angular specific libraries (3rd party library goes to this)
+	once we will use the cmd ng build then disc file will create
+-running the application (cmd - ng serve or ng serve --open)
+-project structer (1400 file create)
+	node_modules (it have all packages inside it) package.json and package-lock.json file have package versions and it is done by npm
+	in package.json file dependencies packages used in production, devdependency used during development, karma is testing purpose
+	in package-lock.json file have all packages dependencies details
+	if we delete node_module file without deleting package.json and lock file we can again run command npm install to load node_modules
+	-that version size ~13.0.0 her (~)it will check patch have any higher version it will install where ^2.0.0 (^)this will check minor and patch no change in major
+-src(sourse folder)
+	assets(3rd party image folder)
+	fevicon.ico(broweser top icon)
+	test.ts file, karma file (use for testing) Jasmin framework use for testing
+	eidtorconfig(used for teamwork)temawork working with GIT or TS
+	angular.json(before angular 6 that file name was angular_cli.json)
+	tsconfig files are convert ts file to js(strict false change in tsconfig.json)
+4.Components(16/05/22)
+-why component based application develop?(single page application we are doing in angular (if a single component need in all page then without duplicate the code we can reuse the single code in all page by calling its selector for this reason component used)
+-decorator is a function it call itself
+-selector, templete these are the meta data of @component decorator
+-any class constroctor call it self due to its decoratorer
+-angular/core is a library which have the @component decorator
+-@hostlistener is a part of angular core library
+
+-selector of a component we can treat as a class or attribute in app-root html file
+ex - .app-student in root file <div class="app-student"></div>
+	[app-student] in root file <div app-student></div>
+-templetUrl(need to enter file path) (it is the html part of the component)
+ template(we can give here the code) 
+template:`<h1>hi</h1> //we can use '' single quotetion but if the code is more then one line it will show erroe if use single quotetion so we use backtick
+<p>how are you</p> 
+`
+5.Metadata(18/05/22)
+meta data increase performace of your app and change coding style
+ex- preservWhiteSpace is a meta data which create space between with in multiple button.
+module and component difference (module is a combination of multiple component if any changes update in module then it apply in all component)(if any changes done in component then this single component only update the change)
+-first MODULE load then all the IMPORT statement are load when we run the program then @ngModule load then application start
+to create a class command is ng g class message. it will create 2 files, this class file need to import in module.ts and pass inside providers file and this class will load 1st. else we can use in component in constructor(private obj:message){message.show()}(it is creating object in this we memory management happening) if we use msg=new message (after use it is not releasing the memory so this way not using) this is a creating object of a class and constructuor call.
+-viewprovider (if we want to use a class in a component level insted of module level (use Message in viewProvider and import it)
+-Interpolation(it is data binding, communtication betwee component and templete)(it is one way data binding)work from component to html {{}}
+	if any class level variable need to use in method need to use this key word ex this.city="delhi";
+	interpolation can do concatination, arithmatic operation
+	Object value binding ex {{company.name}} . we are using to bind value of object
+	if there is no value of a object then it will through the error by interpolation we can handle {{company && company.name}} it will check company data and company name will aailable then it will give output else not
+	by ternary operator we can show data {{company?.name}} if data is there then bind else not. {{company?company.name : no data}}
+
+6.Encapsulation(20/05/22)(to define scope of the css we are using encapsulation in angular)(parent to child, child to parent transfering the property of css is using encapsulation  by using selector)(theme integration tech of css is going)
+-component class, selector, css
+-emulated(no shadow dom, style encapsulation)(default), native/shadow dom(shado dom, style encapsulation), none(no shadow dom, no style encapsulation)
+-need ot import encapsulation:ViewEncapsulation.Emulated/ShadoDom/None(we can use any one as per need) (ViewEncapsulation is a core library part)
+-native(it work on lower hirarchy)
+Input(parent to child)/Output(child to parent by eventemmitter(part of core library))
+Providers(in service we will use)
+
+(23/05/22)Directive(change the html by using loops)(it extend the power of attribute and change the behaviour of html element)
+-3 type component, structural(ngIf, ngFor, ngSwitch), attribute(ngStyle, ngClass) directive
+	-component directive (Component directive is used to specify the template/html for the Dom Layout)
+-ngIf(work on boolean value) ngIf="expression" (it work with enum ) ng g enum numenum
+-ng-templat (it will hide the element) in html there no element which will hide automatic but by this it will hide auto (it not load in browser just in comment it show the cmnt
+-thenblock (for code separation it use)(we can use as like elseblock)
+-with out * how can we use ngIf (* is a high level language so it will take time for compile, so we can write that code so that compile time will not take)
+
+(25/05/22)
+-ngIf using with component(student and teacher data is there and by click a radio button we can see only that data)
+-ngIf using async PIPE (async pipe used to convert observable and promise type data to show in html directly)(promise(1 request at a time, promise can not kill not change) and observable(multiple reqquest, can kill and can change) used to get data)(getting data from server by observable and promise convert that data by service)
+-ngFor(loop)(ngForOf with out *)(index, even, odd, first, last five local variable of ngForOf)
+
+(28/05/22)
+-*ngFor to with out * - ngForOf
+-ngFor with async
+-bad impact to get data from table by ngFor how to solve?(if we have a long data then it impact on dom for loading data)
+  solve - it can possible by trackBy method
+-ngSwitch(multiple case we can define, any type data we can define, switch work fast as comper to if) case have the * not ngSwitch because case only change in dom, in case nothing is match then ngSwitchDefault output we will get, there is no break statement in ngSwitch
+	need to define name="mohan" in ts file
+	ngswitch with inpupt box
+	ng switch with an array with ngfor id=[1,2,3,4,5,6,7,8,9,10]
+	if we will define in a single directive will it work? but ngIf will not work with any other directive.
+
+(30/05/22)
+-Attribute directive(change in attirbute behaviour)(*not use) (ngStyle and ngClass)(normal style is static)(ng-template used to avoid * )
+	static - normal style="background-color: green"
+	if any style declre in ts file and mention in html file called dynamic
+se can use switch in ts file to bind ngstle debugger from start
+if we use same 2 directive of ngStyle then it will override and it will show only single, normal style bind with directive bind will work, both normal style will work if add at a time
+-ngClass (ngclass with string, array, with object(key(css name) value(boolean value)))
+ngfor work with this directice on same
+array - [ngClass]="['one','four']"     one four define in css
+-Data Binding(componet to its view communication)(one a data bind Uni direction)(bi directional two way data bind) ts to view(interpolation) and view to ts(event binding)
+-attribute binding(attribute define by html ) and proeprty binding(property define by dom) after render in broweser same attribute is called property. colspan and rowspan not generate any property so for them only we need to use attribute binding, else always use property binding 
+-proeprty binding is using [], colspan and rowspan can not generate property so propoerty binding will not work but we can inform the dom that it is a proeprty by mentioning [attr.variablename]
+
+(01/06/22)
+-Style binding(bind the style with html and ts)(for variable no need to use single quote)(by function we can use)
+-class need to do dynamicllay, 1st declare the class in css write all style code, then 2nd assign that class value to a variable can use if else, then write html [class]="variable name"
+-property binding and interpolation both are mostly same but some time it fails(if work on boolean value it fails interpolation, current data not get in interpolation so use property binding)
+-Event binding((click)='getvlaue()' this is normal form) (on-click="click2()" this is conical form) click, keyup, keydown, input, mouseleave, 
+-Two way data binding(it possible by ngModel)(ex - input field to ts file data connection when input auto fill in html)
+	-in input field will do two way data binding (both property binding and interpolation do in one input field, insted of it we can use [(ngModel)]="variable name") here we need to use formsModule then only it will work
+-Pipe(2 types 1.built-in pipes(parameterised, chaining), 2.custom pipes)
+
+(06/06/22)
+-decimal pipe
+-percent pipe
+-currency pipe (default currency code $)
+-Date pipe
+(0- -5 1 +5 computer understand binary format 0 and 1, now digital format which is -5 and +5)
+-parameterised pipe (which taking parameter in pipe)(data | pipeName: parameter 1 : parameter 2 : parameter 3 …. : parameter n)
+-chaining pipe(but output should be valueable)
+-custom pipe (ng g p welcome)cmd to create a custom pipe then mention any insted of unknown then return "welcome" + value)(Welcome Custom Pipe, Bold Custom Pipe, Limit word Custom Pipe, Reverse String Custom Pipes)
+
+Service(08/06/22)
+-what is service ?(singleton object created in module)(it is one type of class which allows us to reusabel the funcationality)
+-benefit of service (code reusable so duplicate code we can avoid, by change in service that change can applie for all, for this reason only api intigration happening in service)
+-If we make a service module level then one singleton object will get and this object will use for all component, if we make component level then diffrent object will create.
+-after angular 6 no need providers(before angular 6 only @Injectable()used
+-Dependency Injection(injecting one dependency in other)(service is a dependency we are injecting in component it is called dependency injection)(that injecting process in constructor is called dependecy injection) ex- constructor(private _service:ServiceName){}
+-create service import in component and get the function in component(if we want to make it component then import it in component and inside decoretor import im providers:[servicename], if we will not use inside provider will get error
+-need to do constructor(private _servicevar:servicename){code...}
+-@Injectable decorator need when we make nested service.
+-use of @Injectable inside provideIn decorator(when we use another service2 in another service1 then service1 need to import injectable then only it will inject and work else it will work as normal)(during nested service injectable need) without injectable and import service will work as a classf
+-built in servicee if usse then need to use injectable decorator ex-httpclient
+-if we make a service module level then inside providers we need to mention service (ex- providers:[myservice, myservice2])
+-if we want to make it component level then inside @component decorator create providers:[MyService] and import it also in constructor create object
+
+
+(10/06/22)(singleton object, multiton object)(always service should be singleton)
+-create 2 component, create a service, make that service at module level, then in service create one array, create a method for push data, create another method to show whole data.
+-create a input field in comp1 and use buttn there create a method to add value in service array. by ngOnInit get data 1st and then use it.
+-to show data in html use ngfor in li
+-if it is in module level then we can see data same if any change done in one component, if we made component level we will get different type data.
+-if we make the app in singleton then we have to make it module level if we will use then it consume bandwidth unnecerray because object also create singleton object (ex after payment bill generate) before angular 6 it was done,
+  to avoide this problem use provideIn(it will make root level)this changes done in angular6
+-if we make the service in module level then it will create a singleton object, where we need to import the service in module file, if any person don't want that service unncessary that service will load, if we make it component level then we need to use providers:[servicename] again it will create multiton object.
+	we need singleton object without import the service in module- to use this concept in angular 6 provideIn: 'root' concept introduced where we need to import the service in component and no need to declere in its providers metadata. it will work as like module level and it will work as a singleton object.
+-Tree shakeable providers(use in service)- for testing purpose we are creating multiple service those unnecessary testing files no need to use in that case tree shakeable providers
+  by this if we are using a service we are creating object 
+
+-Class Decorators (@Component and @NgModule)
+Property Decorators (@Input and @Output)
+Method Decorators ( @HostListener)
+Parameter Decorators (@Inject)
+
+(13/06/22)
+-@Input, @Output (9.40)
+-allicing (insted of using a long name need to use small name of variable so it is easy)(17.40)
+-by property binding dynamically we can send array, string, table, object
+
+Angular material
+-angular material(it is too heavy as compare to bootstrap so it is not used much more / need to import each and every module so for this reason it is too heavey) cmd-ng add @angular/material
+-angular.json file if we made change need to run again
+	-for every each thing we need to import that in module file then only it will work
+	-In this way loading time take high, so we can create another module and there we can import the material which we want to add and add that module in app.module.ts file then in that material module we need to export these all imported parameter ex - exports: [MatButtonModule] this one need to import and inside import statement as well
+	-in the above way we are repeating same in both import and export so we can create a variable and same we can pass on both. ex - const matmodule = [MatSliderModule, MatButtonModule] imports:[matmodule] exports:[matmodule]
+Bootstrap( npm install bootstrap)
+-add the path in angular.json file styles ("node_module/bootstrap/dist/css/bootstrap.min.css") file path in start we can use "./path" then it will start work. restart application
+Jquery in angular
+-npm install jquery
+-add it in angular.json script tag "./node_modules/jquery/dist/jquery.min.js"
+-import * as $ from "jquery" where we want to use like app.component.ts file.
+-inside ngOnInit we need to use so document.ready no need to mention as ngOnitnit doing the same job i.e post doc load only it run.
+
+inside ngOnInit(){jquery code need to mention} ex- jquery fade, jquery slide etc
+ngOnInit same work with document.ready()line
+
+(16/06/22)
+Custom directives(out of 100% only 2% need by custom directive mostly custom directive we can use)(it is not using mostly because it will slow down the system if we write custom directive)
+-ElementRef() need to learnd
+-ng g d directivename -- skip-tests (this will skip test file)(cmd to create a custom directive)
+-<h2 appTheme> this is custom directive </h2> h2 is the hosted element and apptheme is host
+-mostly custome attribute directive we are working.....(hostbinding and hostlistener decorator use) 
+-@HostBinding (no need to create instance in constructor)(directly it will work on hosted element)
+-@HostListener(it will listent the event)
+-insted of sending color name we can send object, array string, anything we can
+-if we will do property binding it will ask for variable so in that case without variable we can use single quote inside double quote
+-as like style binding we can bind class 
+
+(17/06/22)
+-component Lifecycle hook(important) (8 phase)(all the phase not necessary to execute if need then execute)(all lifecycle event not in app component as it is a lifecycle hook so it will work on only with component)(hook means event)
+-1st class constructor call then lifecycle hook start as constructor is a part of class not a part of component
+-to resolve dependency before the lifecycle hook need to use constructor (dependency are receive in constructor)
+-ngOnChange(1st phase) (it work with @Input() only)it accept one argument 7 not rcv(with this one argument we will get 3 value 1.current value 2. previous value 3.firstchange (call by reference it not work, only work for call by value) ex you can take array (if we add value of array then ngOnChange not call, but the same ngDoCheck call)
+-ngOnInit (2nd phase)(A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive. Define an ngOnInit() method to handle any additional initialization tasks.)
+-ngDoCheck (3rd phase)(it will call every time whenever a changes done in ts file parent file and html file etc)(mostly not use in industry because it will slow down the app perfomance)
+-ngOnDestroy(8th phase)(to release the memory)(to cleanup the code)(if parent destroy then ngondestroy called on parent only not child or not in app compoennt)
+-constructor and ngOnInit is mostly use in every project so for this reason when ever we are creating component bydefault we are getting it both
+-onInit is implements in class if remove it will show error, we can implement all events in implements by separate a comma (implements profit is if any event name is mismatched it will show error)
+
+(20/06/22)
+-contentprojection(as like cinema projection is using this is the same concept) parent and child if we want to show child in parent then we need to use app-child in parent tag inside ng-content tag need to use (need to know the benefit)
+-All the dependency from which we need data that need to inject in component constructur.(ex - service, router etc)
+-ngAfterContentInit()(this is part of child)(this is called only one time when content projection work )(it use in parent and child both, and call first child, only useful in parent not child)
+-we can made the changes in child component from parent only ex- we can change function value etc... which can not possible in other hooks. this is the best way
+  to do this change, need instance of child  for that, need to write in parent @ContentChild(ChildComponent)childComponent!:ChildComponent this decorator need
+	if we want to use in other hooks then @ContentChild(ChildComponent, {static:true})childComponent!:ChildComponent then it will work but it is a wrong way
+-ngAfterContentChecked()(when ever the value changes in contentchild it will execute multiple time)
+-ngAfterViewInit() same but use @ViewChild (if we update new value as like above we will get error, but if we fetch data or function we will not get error)
+	to avoid error need to use detectChange which use in constructor. private cd ChangeDetectorRef
+-ngAfterViewChecked() same like contect chekcked viewinit
+-ng-template will work with only ngif, ngfor, ngswitch decorator same like ng-container is a tag both are angular tag not html tag (but ng-container will show but not ng template)
+
+(21/06/22)
+-ng-content & content projection ( content projection allows you to insert a shadow dom in your component)(!: -means not nullable at all, ?: - means nullable can happen not sure)
+- msg !: string; or msg ?: string; why we use !:(this means that this string is not nullable ts will not allow null value)
+-Input output decorator only work with value as a string but if we want to pass the tag it is not possible so in this case so we use content projection.
+-can use filter in ng-content by tag name, class name, id name, attribute name, for each tag name we need to mention different ng-content and if post filter we want to show alll we can simply use the ng-content tag, for id use #id and class .class, for attribute use [type], if multiple want use select='h1,h2'
+-@viewchild(), @viewchildren(), @contentchild(), @contentchildren() (these decorator we are using when we want to access following inside the parent component - 1.child component, 2.directive, 3.DOM element)
+- viewchild provide single instance (if we will use that instance insted of viewInit and ViewChecked if use in other lifecycle hook then in that need to give static true else will get error, if use costume method then no need to enter static true)
+	-@ViewChild will go to its own html page and it will find is there any selector available for same component for which we have created
+	-it work with single selector
+-viewChildren for multiple selector it work, so need to use QueryList, also use forEach loop
+-for directive and dom element we can create separet component and directive accordingly we can use.
+
+(22/06/22)
+-QueryList(find,map,length, filter) (single output with object form)(map is also one type of find)
+ @contentchild(), @contentchildren()
+-we can not create attribute for selector so we will create a name variable and we will assing different name to all selector and then we will use filter, find, map.
+-as like viewChild and viewChildren same example and need to do content projection for contentchild and children
+
+
+(27/06/22)(example - book1, book2, book3, allbooks used only for routing)
+-ROUTING (angular is a single page application not a multi page application so to call multiple component need routing)
+-routing is the mechanisim and router is the library
+-7 phase (parse the url(break the url  and convert into url tree and use it in step 3) (/, (), :, ?, // these all used to devide the url), redirect, identify the router state, guard- run guards, resolve- run resolvers, activate, manage)
+-router-outlet (it is like a placeholder and where we mention router-outlet there only component will load)
+-create 3 4 component for routing(ex- dashboard, contact us, about us)
+-wildcard routing (** use) (404 not found) {path: '**', component:ComponentName}(always it need to mnetion in down, if we mention in top or middle complier will not go forward for every page it will show page not found)
+-redireting routes(redirectTo) (used to hit the base url) {path: '', redirectTo:'home', pathMatch: 'full'} pathMatch 2 types 1-prefix, 2-full. all router are prefix no need to write when the path is empty in that case need to mention pathMatch: full means path is empty and use the base url. (it can write anywhere in the route tree)
+				{path: '', redirectTo:'home', pathMatch: 'full'} and {path:'', component:ComponentName} both same work but difference is in redirectTo url will show home but in 2nd one will show empty url
+-href and routerlink diff(href load whole page but routerlink not)(if in html page there is no href and no routerlink also component will load but we need to mention manually contactus in url)
+-by property binding we can change dynamically load page 
+
+29/06/22
+-routing with parameter ("'aboutus',101,'debu'") aboutus/:id/:name, (for different parameter and number of parameter we need to define different route path)this possible by property binding both side [] this need to use
+-server side navigate (by component construstor) (by clicking button)(router need to use in constructor and it provide navigate method)
+-we can directly use the routing in module insted of separate file but this is not the right way (follow video 2 after 12.00 mnt)
+-child routes/nested routes( path:studenat/details this is not proper way, in this way guard repetation happen)best way
+-nested
+-parameterized routes(parameter sent via router) (diff way we receive)(2 types we receive parameter route snapshot, router observable)
+	-route snapshot(same page to same page hit ex - redmi note 10 mobile search similar mobile will see if we click below similar mobile same page only parameter change)(it will show old data)
+	-router observable( it will show current data)(both snapshot and observable work same but if we go one page to another both work fine, but if we go same page to same page then data getting change)
+-to receive the parameter from url need to use ActivatedRoute object then only we can get for any.
+-for data need to create a service and return as observable type. 
+-of operator used to convert data to observable.
+-create 2 component book and inside book bookdetails again to fetch or receive service data and then disply in book and use routerLink to disply id in bookdetails link
+
+(04-07-22)
+-receive parameterised routes parameter by 4 ways (route.snapshot.params, route.snapshot.paramMap(new one), route.params.subscribe, route.paramMap.subscribe(new One)) 
+-in bookdetails ts file need to use ActivatedRoute to receve parameter.
+-for go back angular provide a common librabry that is location need to import. this.location.back 
+-different between snapshot and param is in snapshot if we want to get the same page then it will not open if we want to get same page relative data then need to use param or paramMap ex - flipkart mobile page under we will get some suggestion mobiles
+- before if we want to pass the parameter we need to write the path but now only one path but multiple parameter we can pass (this can possible by query params/query string)
+	-here need to import router and use NavigationExtras, in dashboard we created this. to fetch this parameter we need to use activatedRoute then use queryparams and subscribe.
+	-without NavigationExtras also we can make. (router.navigate())
+-to receve this parameter we can write code in aboutus by using activateRoute use queryparams.subscribe to get data.
+-there is another way by which we can send sensitive data through link which will not display in url.
+Route Guards(guards use to set some rule for webpages who can access which page)
+-angular provide 5 types guard which we can create (canActivate, canActivateChild, canDeactivate, Resolve, canLoad)
+	-canActivate (it checks route access) , canActivateChild(check child route access), canDeactivate(prompt for unsaved changes(ex-filled form wrongly closed will get pop up)), Resolve(pre fatchine route data(if in other component no data get pop up no data by which saved to load component)),  canLoad(check before loading feature module)
+	-guards are impliments like as service (it work like as service) after angular 6 guard have @injectable.
+	-it works on true or false(access is allow or not)
+	-guards can return observable or promise it also same work on boolean value.
+	-it must be imported to the app or root module
+	-it is like services so it must register in the providers section of appmodule.
+cmd ng g g guardname
+-on which name we will create guard same name interface and same name method will create.
+
+(06/07/22)
+-route guards(other technology directly load the page then it show not allow for un authonticated people, but angular will not load the component)(other tech use session as like router guard)
+-ng g g guardname (cmd to create guard)(it is same like service)
+-canActivate(need to write code inside the guardname)(this need to use in single path)
+-canActivateChild(work on child)(if we apply in parent it will effect all child under parent, but will now work for normal single path)(different use from above one)
+-canDeactiate(different code from above)(we can use component based)(to use in multiple component use generic code)(above both code used when we click the link to go to the component, but this guard will work after go to the component and if we want to leave the page)
+	-we can do component based guard we need to mention component name and for the particular component only will work, and its logic code we can write inside component.ts file. In this way if we impliment the same guard with other routing path then it will not work so for this reason we need to write generic code
+	-for it need create an interface by any name need to export that in guard and inside it create a method also define its type. also the same method need to use in all component and we can write same logic.
+-resolve(it will check wether data is available or not, it will check before loading)(there is no option to select resolve guard in cmd, need wo create own interface) (facing issue will check later)
+-canLoad work only with feature module in lazy loading but above all work with component.
+
+
+(08/07/22)
+
+(18/07/22)INTERVIEW QUESTION
+-Named & multiple router outlet (auxiliary routes) (secondary routes)(rare case this scenario used)(in view we are using single router outlet but we can use multiple router outlet) (important for interview)
+-if there are multiple router outlet then last one will execute because code run top to botton and last one will execute at end and it will override to all.
+-when we use multiple router outlet it is not user friendly 
+-if there are more than one router-outlet is there then we need to mention a name after 1st router outlet that is called Named & multiple router-outlet.
+	ex - <router-outlet name="2ndrouter"></router-outlet>
+-once we do the named one then links will load on primary router-outlet others are consider as secondary router-outlet
+-if we click on 2nd router outlet then it will load on down for that we need to create a new path and new view link
+ 	ex - <a [routerLink]="[{outlets:{2ndrouter:['aboutus']}}]"and its path - {path:'aboutus', component: AboutusComponent, outlet:'2ndrouter'} if we mention router name by number and letter it will not work ex 2ndrouter
+	at the same url also change with in ()
+-on the same we can pass parameter as well.
+Various ways of passing data to route( 4ways)
+-static data using the data property(direct we can write data in path and we can get it in link ts file by using ActivateRoute)(data should mention key and value pair ex data:{id:122, name:'dkd',price:'33'})(this data will not visible in url link)(to fetch use activatedroute.data.subscribe)
+-dynamic data using the state object(when we pass some data by ts file to route this is called state object)
+	(in html file in the routerlink we can use state object to define the data and we can get it by using in its ts file ex - console.log(this.router.getCurrentNavigation().extras.state) getCurrentNavigation is method to get the data from state object and this is available in only constructor. it will not work in ngOnInit()
+-Location is a part of common library, to get the state data we can use this library and in console.log(this._location.getState()); here we will get navigationId.
+-we can get the state data in console.log(history.state());	 this above 3 are client side.
+-here we will do by button which is server side/dynamic 
+	we will create a button and use click event then in its ts file this._router.navigateByUrl("aboutus",{state:{empid:102, empname: 'debu'}})
+Router Link Active(this will show which link is active now and which is not active)
+-we can use it routerLinkActive in the <a> tag only ex - <a routerLink="home" routerLinkActive="active home">HOME</a> here active and home both class where we mentioned css property.
+-we can do it dynamic by property binding and we can use some condition statement as well
+
+(19/07/22)NEW CHAPTER
+Observables and Subscribe (it is part of rxjs library to perform asynchronous task in angular)
+-synchronous(application <-> server later code will not load till start will will not load
+-asynchronous(application <->observable <-> server) all code will execute
+-angular 6 and above have rxjs else npm install rxjs --save
+-http used to do CRUD operation and service use
+-angular in-memory web api npm install angular-in-memory-web-api(it used because different backend language need to create a api, angular coder should not depend on any code so this one introduced)
+-need to create a class then import {InMemoryDbService} from angular-in-memory-web-api and then implement in class. post that class will ask for createDb method which we need to define inside class.
+-then create an interface to define the type of class. ng g i book.
+-then create service
+-need to import in module.ts file both httpClientModule and HttpClientInMemoryWebApiModule.
+-when we get response then only service will work else not
+-apiurl need to make private else it can accessabe for service as well which is no need
+-same observable data to get by async pipe
+
+(22/07/22)
+Observable Pipe
+-check data by id by using subscribe method ( In this way we will get the data in array form of 0 index so need to use res[0] then data will bind and getbook() need to call in ngOnInit().
+-if we want to fetch a single book name then in that case no need to subscribe whole data. we can use pipe and map to get the particular data as map will filter and provide a particular data.
+-Async pipe with ngIf (in this case async need to define a variable ex - async as mybook and mybook need to bind in html)
+-Observable of(if we are returning observable type data then need to use of)(to convert normal data to observable type need to use of) (we can use by installing rxjs-compact library or from rxjs need to import of - import{of} from 'rxjs'
+-Observable map (it take observable type data and return same, but with in that time we can made changes with the data we can do find, filter)
+	without subscribing we can use map and can do subscribe then we will get particular data(will get the error map is not a function)in angular 14
+
+(25/07/22)important
+Observable mergeMap (its use - when we open e-commerce site and search for a poco c31 mobile then in that particular page if we scroll down we can see some similar mobiles so in this case mergeMap used 1st it will take the clicked items id then it will find the catagory, both merged and then one subscribe method)) (import { mergeMap } from 'rxjs';
+Observable retry (whenever we are doing api call we will get error so 1.network related, 2.backing related) network related error can resolve by retry (import 'rxjs/add/operator/retry) pass argument retry(3)
+Observable pipe (Pipe we are using to combine functional operator)(pipe accept operators as argument such as filter, map, scan etc need to mention separate by comma and need to subscribe to get the result)(pipe merge all operator)
+
+(27/07/22)
+FEATURE MODULES(feature wise we are combining the component in different module it called feature modules)(ex - college application where we will separate student, teacher, library, transport, ets modules and inside each module different compoennt it is easy to manage)
+(apart from root module what ever modules we will create for the app, all single module is called feature module)(to organise the code we are using feature module)
+-difference between feature module and root module(root module will visible, it will boot the  app but feature module can hide and show, post booting it work)
+	-A root module imports BrowserModule, whereas a feature module imports CommonModule.
+-ANGULAR MODULE LOADING(eager loding, lazy loading, preloading) CAN IMPLIMENT POST FEATURE MODULE ONLY.
+	-eager loading(default)(before start app module will load)(appmodule.ts file all the module can import and all module will load from starting)(but loading time of the app will increase)
+	-lazy loading(on demand load)(when we click particular module then it will load)(by routing lazy loading possible)
+	-pre loading(is loading modules in background just after application start)(in obious case this is work)
+-in lazy loading we use loadchildren property in route configuration and that feature module must not imported in app module.
+-lazy loading can be possible when the application is in feature module and preloading can be possible when module is in lazy loading.
+-2 type preloading(preloadallmodule(all module will load from starting), nopreloading(no module will load))if client say need 2 module preload and 2 module lazy then in that case we can use costume preload.
+-custom preloading also we can implement
+-ng g m modulename --routing (by this command module will create its owner routing file, because it is necessary)
+-ng g m modulename --routing --module=app (in this case --module=app tells to cli to register it in the imports array or the appmodule)if we use --flat then module will create in root insted of inside a folder
+-to skip the test file use cmd - ng g c employe --skip-tests
+
+(29/07/22) -test2
+(31/07/22)-test2 answers
+
+(01/08/22)- feature module codes
+-create person module with routing, then create person component by using flat in root, create person-list compoenent in person
+-create company module with routing, then create company in root component using flat in root, create company-list component
+-if we create component then it will import in decleration section of approot module but if we create module then it will not import cause angular does not know which one we wanted to do lazy loading or preloading we need to import manually.
+-create common component home
+-in eager loading which ever 1st import in appmodule.ts file that module will load first
+-impliment lazy loading by removing import statement from appmodule.ts file.
+-preloading(nopreloading, preloadallmodules) can possible when feature module is in lazy loading. just in import statement of routingmodule we need to import - imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+-custom preloading(need to create a service) for this angular provide preloadingstartagy interface which we need to impliment in service post we will get preload method by using this we can create a custome preloading
+-at a single time either lazy laoding or preloading can possible so to identify we can use data property in lazyloading then we can use it in service for identify by if condithion.
+-if we want to make 4 sec delay pre loading that we can do.
+-canLoad can use insted of canActivate.
+
+
+
+(05/08/22)important
+ANGULAR FORMS - (1.template driven form(from angular js)(html)(for small project simple task) 2. model driven form(for big project and big task)(most code in ts file))
+	-template driven form(need to import FormsModule in appmodule file)(ngModel use for data binding)
+	-model driven form(need to create model using angular inbuilt class formGroup and formControl)(ReactiveFormsModule need to import)
+-template driven form (ngForm used to get the value of all input field where ngModel used)(ngForm create control groups inside form)
+	-if we use input type submit then we can use ngSubmit if we use normal button then in that case need to use click event. If we remove name attribut then will get error
+	-validation of template driven form - 1.required 2. ngModel message show by span, 3.disable submit button, 4.touched not filled input, 5.minlength maxlenght, 6.class name we can use in css for background color if not enter data.
+-Reactive form (important interview)
+	-1st impoft ReactiveFormsModule in module.ts file
+	-2nd create formGroup and create its control by new keyword(new keyword take space in memory then we need to release)(without new keyword we can do)(not right way)
+	-design html
+
+(10/08/22)Reactive forms
+-by form builder we can create data(formbuilder we can create in private and use fb.group())
+-use only id:[] for all formcontrol and remove all code.
+-in the samecode in ts we can use validator.required post ''. if multiple validators use then use inside array and use comma.
+-if we use multiple validators use compose to faster code execute.ex - validators.compose([])
+-if condition use and show data for validator and show same message in webpage.
+form getValue and reset()(2 way).
+	-get all single value in console(this.regform.get('fname').value
+	-create a reset button use type reset by defult it reset all.
+	-we can reset using click event and we can set dynamic data
+setValue()(set all the value, if we left any one value will get error in console), patchValue()(partially set value in contorl)
+	-create button for setvalue
+valuechanges(debugger if value change get data) and statuschanges(when validation change get info)
+-whenever we need real value use subscribe.
+FormArray(as like irctc, add new passinger details, dynamic we can add data) next class
+
+
+(14/08/22)TypeScript
+-it is superset of js, it is a pure open source object oriented programing language. it is a strongly typed js. (we are defining type in different file). compile in simple js.
+-ts is the es6 of js version with additon features.
+-static typing(during compile define type)
+-interface is like a contract to define type or we can define multiple methond and all need to use in class
+-inheritance (code reuse facility
+-generic(if we don't know which type data we will get in return in that case we are using generic any we can use as like generic)
+-ts has a concept of namespace(it have multiple predefined classes and functions which we need to import to use)
+-Ts data type -var age:number=32; (console.log(typeof(this.age)) if name:string if we check its type of we will get undefined until we set the value.
+-let, var, const (let and const both work with in the scope but we can assign new value for let but const not)
+	-inside the class not need to mention let or var but inside function we have to mention let var else will get error. because in class level by default its type is var.
+	-var if we create same name multiple variable not show error but in let it will. let variable can not be re-decleared
+	-var if we console first then declreare value it will show undefinde but let will give error. 
+
+
+(17/08/22)TypeScript
+-const(same like let here const value not change)(decleration and initialize in same line if different line will get error)
+-ts data type(static(built in(number, string, boolean, void), user defined), generic(any type data), decorator)
+-if functin type void then no data will return
+-string concat - with in quotation and with in ticks 
+-if a function we mention void type then we can not return anything, but by default function is void we can return any type data.
+	-if variable type void then only undefined or null we can assign, it is unuse.(interview)
+	-num1:null, num2=null (1st one we can assign only undefined and null)(in second one we can assign anytype value)
+	-num1:undefined, num2=undefined(same like null)
+-generic any type -if we don't know the type then only need to use datatype any
+-user defined data type - array similar data type or generic way
+	-list:number[]=[1,2,3,4];
+	-list1:Array<number>=[1,2,3,4];
+-touple (list:any[]=[1,true,'number'];)(student: [number, string] = [101,'debu']; ) in this array if we add new value need to mention type before else will get error.
+	-if we push value then same type we have to enter else will get error, if we enter boolean will get error
+	-we can create array of array in tuple ex var person:[number,string][]; person=[[1,'debu],[2,'panda']];
+-interface (what ever method we have mentioned we need to define it in class)(this need to impliment in class) (if child class want access of parent then extend the parent class use extend)
+-generic function (display<T>(name:T):T{return name} it is the syntax of generic function T we need to use.
+
+(19/08/22)typescript-if
+-if else condition else if else if we can use.
+-if one line code we can use x>y ? console.log("this wil execute") : console.log("not execute"); 
+-switch
+-for(normal loop), for...of(array value get each index value), for...in(index it will return)
+	-for(var val of arr1){console.log(val)} same for in
+-difference in for while (in for loop increament condition initialization doing in same line)(in while we are doing in outside)
+-dowhile(at least one time code will execute)(when condition is false then also one time execute)
+-ts data modifiers(private, public, protector)
+	interview question-we declared below 3 type can we access via object and method if yes which all can possible? (if we inherit then public and protect can access, if we create object then only public will show)
+	-public - any class can access
+	-private-only this class
+	-protected - inherited class can access
+-function(named and anonymys)
+	-we are declering the functin via name and we call it is called named function. ex - method();
+	-anonymys function called via variable ex = greeting=function(){console.log('hii');} this we can call via variable greeting.
+	-even we can do return type and parameterised.
+	-if there is 2 parameter if we want to pass one parameter by name?: by ? we can make optional
+	-we can set default parameter in case we have not passed any other value then defalut one will show.
+	-rest parameter(in the function we can use rest at the end then it will take all parameter) we can use ...name and to get the output use name.join(','); if we mentioned in middle then rest will not call.
+-arrow function (with out any function name we can use it)
+
+(22/08/22)
+
+Nested FormArray(adding multiple row)(ex - adding multiple number)
+	-use another form control for the same and create another variable in ts and pass formarray and add formarrayname in html.
+Nested FormGroup (suppose we have a complete form and we can use nested formGroup by which we can validate each different group no need to validate whole we will divide whole form in multiple group using nested formgroup)
+	-we have created a new component where we have implimented nested form group registrationformgroup
+
+(26/08/22)
+HttpClient(it is a method used to communicate with server, get(get data) post(insert data) put(update data) delete(delete data) use)
+below parameter are used with httpclient
+	-headers - it is optional type in the url we can communicate with the server
+	-observe (response, body, event)
+	-params
+	-reportProgress
+	-responseType(it is optional)(we can use with in {responseType:'json'} in return of component
+	-withCredentials(less use)
+-To use httpClinet use module HttpClientModule in module.ts file then we need to create its object by injectig httpclient
+-here we will create a data using angular-in-memory-web-api then use it in service to fetch data
+-httpheaders(this is optional type, how to set)
+	-let httpheader=new HttpHeaders()
+		.set("Accept","application/json") //used key and value pair, here we can use multiple set this need in backend
+		return this.http.get(this.url+"?catagory=" +cat +"&year" +yr, headers:httpheader)}
+-HttpParams() (inside params we can set multiple parameter and we can use it in return
+-observe (if we use only body then we will get body data only)(if we use response need to use HttpResponse 
+
+(26/08/22)
+-above all can use for put, post, delete
+-response type we can mention true. 1-uploadprogress, 2-responseheader, 3-downloadprogress, 4-response
+-Error handling(2 types) for this we can use and other invalid api and call the same so we will get the 404 error
+	-by using a comma in component.ts file we can mention error function. if we not mention error function we will get another errror.
+-post(We can insert data)
+	we need to set first then use post method in service file, then we need to write code in component file also we can mention above error handling code.
+-put(to update something we need to create a id)same code like post.
+-delete()same code for delete as like post here we need to pass the id so that particular that will delete.
+
+(31/08/22)Session Management (session is a place where we can kept data for re-use) we use HTML5 web storage to store data in angular at client side
+-web application store data locally with in the users browser before html5, that had to be stored in cookies, it is secure and store large amount of data, without effecting web performance
+-to use html5 storage no need to install anything in angular, but to use cookies we need to install cause it is 3rd party
+-local storage(store locally untill user want to delete data will be there till that time) and session storage both are mostly same
+	-localStorage.setItem(key,'new value'); same like set we can use get, clear
+	-if browser is old then might get error
+in-complit
+
+
+LIVE PROJECT SAHOSOFT------- (latest 14) E-commerce application (will use bootstrap not angular material)
+(in project training we will learn like corporate level )
+(always create old version project because in new version we will get more bug error)
+(To use old version of angular, 1st we have to install older version of cli and node then we can use old version angular)need to downgrade cli and node
+(angular developer has to know theme intigration)
+
+http://www.sahosofttutorials.com/sahosoftmalladmin/login
+username - Ajeetsingha@gmail.com
+password - 123456
+
+class-1
+-create a folder SAHOSOFT-PROJECT, open it in visual studio code, open terminal use command (ng new backend)to create the project, select scss insted of css, routing as well.
+-most of the company prefer scss(w3school). in scss we can create variable, for loop if condition and many more.
+-basically we will do 2 project one for admin portal and another one for customer portal (separation reason application heavy, security issue and so on)
+-in admin portal we can add remove multiple things accordingly it will visible in customer portal
+- ctrl + space bar with in single quote to get files
+-all theme related design we will create one folder name theme and then we will uplod all file inside theme folder inside assets then we will create one css file inside assets and we will
+ import all files in one file and that particular file we will import in global scss file which is style.scss this is the best way
+-we can freely download theme from google ex - angular theme, html theme etc post download we need to use npm command then it will run
+- during theme integration normal css related file we will impliment inside theme folder remaining all dependency we will install through npm.
+ ex - bootstrap, angular material etc (npm i bootstrap) 
+-inside styles.scss we need to import bootstrap ex - @import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'.(bootstrap.css and bootstrap.min.css so min means minified that bootstrap it will not take much loading time but bootstrap.css is little heavy)
+	if we are using scss then use @import '../../node_modules/bootstrap/scss/bootstrap.scss' (this is 3rd party packeg we have installed)
+-bootstrap need to mention in top because it will load first
+-install font-awesome (npm i font-awesome) import it in style.scss '../../node_modules/font-awesome/scss/font-awesome.scss'
+- if any version is not available in npm we can check directly ex - npm font-awesome version
+over
+
+class-2
+-previous class we have installed 3rd party bootstrap(this is similar for all technology) but we need to install ng-bootstrap(only for angular to use this no need to know bootstrap) which is only for angular we use.
+-above bootstrap installed only for css design but ng-bootstrap we will use for to impliment the component
+-to use ng-bootstrap angular version should be 9 or more than 9 (npm i @ng-bootstrap/ng-bootstrap) 
+- IF ANY VERSION RELATED ISSUE GENERATE THEN WE CAN USE THE CMD - npm i @ng-bootstrap/ng-bootstrap --force (this will forcely install but there is 50-50% chance everything will work fine)(else version we can use npm i @ng-bootstrap/ng-bootstrap@13.0.0 this may work or not))
+	once installation done then import it in appmodule.ts file import {NgbModule} from '@ng-bootstrap/ng-bootstrap' post this no need to use any other jquery library and bootstrap library
+-as like font-awesome we can use feather-icon (npm i feather-icon)it have good icons
+-once installation done follow the documantation
+-for the feather-icon we need to import feather icon in every component and call it in ngOnInit (import * as feather from 'feather-icons') inside ngOnInit feather.replace(); this is not right way to write code in angular
+	-right way -
+-during attribute binding use [attr.attributename]='variable'. In parent child relation in child we need to use @Input decorator, ngAfterViewInit(){ feather.replace()}so that component will load
+-toastr (npm i ngx-toastr) and (npm i @angular/animations)-animation package need dependency for the default toast. This need to import in style.scss it have only css.
+	then import in module import {ToastrModule} from 'ngx-toastr' then use ToastrModule.forRoot({positionClass :'toast-bottom-right'}) //else will get error
+	then import BrowserAnimationModule this is required.
+	post that call it in service TostrService then inside ngOnInit(){ this.servicename.success("data saved"); as like notification side we can see
+-sweetalert2 - alert pop up (npm i sweetalert2) swal we will not get so that need to import import Swal from 'sweetalert2'
+
+over
+
+project start
+class-3
+-install bootstrap, ng-bootstrap, font-awesome, sweetalert2, ngx-toastr, angular/animations, feather-icons
+-how to create folder structure(from the starting of the project we need to catagory all the section as like feature module because in future application may increase)
+- create a folder named components enter into it by cd cmd, then create a module dashboard with routing(ng g m dashboard --routing).
+	-inside the module create a component named dashboard as module level (ng g c dashboard/dashboard --flat)
+	-inside the components we will create another module as like dashboard named auth for login purpose (ng g m auth --routing), we will create a guard for authorization (ng g g auth/auth(canActivate)), will create service () because angular says business logics no need to write inside component need to write inside service. ex - post login where to go which component need to load etc
+	-similarly create invoice module and module level component.
+	-create masters as a feature module with routing. inside it create component in different file (brandlogo, catagory, color, size,tag,usertype) cmd (ng g c components/masters/brandlogo) etc
+	-similarly create all folder structure as like project.
+-we will create a shred folder module type where we can mention common component like footer, navbar, snackbar etc. this module no need routing we can call by its selector.
+-bread-crum is a part below nav bar and side to sidebar heading of a component.
+-so all the lazy-loading routing part we need to mention inside app-routing.ts file but it is not the right way, right way is to create another ts file and there we will mention all the routing part then that routing file we will connect to app-routing.ts
+	- in this project we have created routes folder inside shared and then we have created a ts file named content.routes.ts we will mention routing part here.
+-we will create service and interface folder inside shared folder.
+completed
+
+class-4
+-we will create a http service file inside shared/service to keep all the service put,post,get,delete methods and we will write common codes here.
+-we will import httpclientmodule in appmodule.ts file cause we will use httpclient in service.
+-get method not only to get data by post method also we can get data. get is not secure cause in browser also we can see the response data. post method will not call in browser by postman we can see it is secure line.
+-post method will pass url along with body(model),model having object type data, but we will pass it to api by json format because json is lightweight. Even we can pass the optional headers by set it json type.
+-similarly put method having parameters of url, id, model.
+-delte having paramter of url, id. In companys mostly delete not used because by delete record delte from db, so they use softdelte infuture they can access.
+-api path which we are using is 2 type one is development type another is production type. In development type we can insert anything no issue.
+	-production path we need to set inside environment.prod.ts file and development base path need to set inside environment.ts file.
+	-when we use ng serve then development path will run and when we use build then production path will run
+-will create one enum file ex - save button but when we click edit then that save button should display as update button for that enum comes in role file inside shared/utility
+-will create another validations folder and inside we will create validation.validator ts file, we will write code for the validation as like required we will write custom code.
+-dashboard page accessable for all post login but there are some option visible for manager and some option visible for normal employe so that can possible Role-Management-System(this is a software) here we will not learn.
+-All sidebar name we will create a json format data and we will get from there will write generic code for the same.
+	-will create an interface named menu.interface.ts file inside interface and we will define all sidebar link(by click will redirect to that page) and menus(by click drodown will get)
+	-will create a service inside service named menu (decleare a variable which can accessabel globally)(declare in caps on because of standard rule)MENUITEMS
+completed
+
+class-5
+-we will do login and register page first, for that we will add ReactiveFormsModule inside auth.module.ts file along with we will add authmodule inside app.module.ts file
+-NgbModule(ng-bootstrap) will add inside auth.module.ts file for nav.
+-write html code for the same page then connect routing at auth-routing.module.ts file.
+-ng-bootstrap code we will write. then male false the strict mode.
+-work on login.component.ts file by creating formgroup.
+-for multiple validators we use Validators.compose([]) with in the array we can mention all validators
+	-when a user register for the first time then one userTypeId generate here we have given a static id for default one. later will do on code
+1st part complete
+
+-use validatros and for password we will create custom pattern from google we can see.
+-if we will get a linebar in middle of any functionname then that is depricated(it means that code may not use in future or may not work)
+-to validate password and confirm password, we will add validator parameter again in formgroup as in code.
+-get ctrl() - getter property (will check later)
+-bind the form [formGroup]=formgroup name and ngsubmit=function() inside the function do not pass the formgroup name it is wrong way, because we are getting data by formgroup
+-post that we will do api intigration for login and for the post method end of the api path / this slash is mandatory and need to pass model (this.loginForm.value)it carry objcet of loginform username and password.
+-sahosoft they developed api like a format where we will get isSuccess, data[], error[]. if isSuccess is true we will get data else will not get data and in error 0 index we will get error name not 200 or 500, 404 errors like other API,
+	this is already done by backend.
+-submitted button will set true for the validation inside register()
+
+2nd part complete
+
+-inside register we will write the code, if success then we will reset the whole register form field as blank not null as like code else we will display error.
+-post registration we will navigate to login nav so we used viewChild template reference of  wholde div then called refval.select('nav item') also will set submitted false.
+
+3rd part complete
+
+
+class-6
+-will use validation for register form field bootstrap property where we can check condition wise red color border and validation message. (using different way to understand more)
+-so is-invalid is a bootstrap property(for border red(doubt)) and ctrl we used as a getter property. in html error proeprty need to write in small letter. like minlength, maxlength
+-for email need to use pattern (pending - email pattern and is-invalid
+-post login we need to set which page will load so it is a business logic for that we will create on service in auth.service file
+	-in authLogin we will get response in object format but we need to convert as string so will use JSON.stringify(response) for local storage and variable userDetails
+	AdvanceObservable-object type BehaviourSubject will use (by using this if any user refresh the page auto logout will happen) it is same work can do in local storage but there it will not logout when refresh the page.
+	-message, currentUser, loggedIn
+	-we will create method to convert behaviour into Observable (reason no one can change the original value by mistake)
+	-benefit to use behaviourSubject is it can carry multiple and instant data ex - if any user in some middle page and logged out then all data will earese and logout for all page. application will work reactive manner
+-error  - CORS policy means api hosted which broweser not allowing access that api at other browser so the api developer can approve their end to access not error from front-end
+	-sometime what ever we are sending if not match what api want then in that case error from our side need to check in response
+-now we will use auth guard for login to redirect for authunticated user
+-in group we receive an error of depricated there we will use ctrl:AbstractControl(new method use insted of from group)
+-for multiple validation we need to use abstractControl and we need to create formGroup instance
+
+completed
+
+class-7
+part-1(empty)
+-1st will impliment routing in feature modules(1st dashboard, invoice, master(will use children), products, etc) all feature module we have implimented routing.
+	-then we will use lazy loading at content.routes.ts with in shared/routes then will connect with app.routing.module.ts file. for clean coding.
+	- will add router-outlet in layout component also in module will import routerModule and sharedModule will add in app.module.ts file because inside sharedModule we have layoutComponent
+
+-Angular HTTP Client Interceptors
+	-it is a middleware, it use whenever we do a http request(it acts as the layer before sending a request and after receiving a response)
+	-we use intercepetors for common functionality for get,put,post,delete api methods. there we can use. example token using for authonticated person, error handiling.
+	-in angular application we can create multiple interceptors, for request and for reponse we can use.
+	-will create one interceptor folder inside it will create request and response interceptor (ng g interceptor request)
+	-inside its service file HttpIntercepter implements in class (inside the code request having the object of api call, and next use to call another interceptor to through data)
+	-request(immuatable) is not modifiable so we will create a clone and its copy will send again.
+	-for login and register no need token so for that will differenciate.
+	-token is a additional data for that we will pass through headers.
+	-In api token is in JWT format to pass this JWT we use keyword `Bearer ${currentUser.token}`
+-if we want to send image in that case if we will do JSON.stringify then api will not take the response because its need is in byte format.
+	inside interceptor we can write of(req.headers.has('isFile')){} isFIle is declered inside of Content-Type inside httpservice.
+	will get response type 0-4 if 4 getting data with body
+	-inside response interceptro we will write code for response like error handling.
+	pipe use to retry 3 times incase net issue and map we used to redirect to that component if have res.
+ 	-catchError((err:HttpErrorResponse)=>code)
+-to apply the both interceptor inside app.module.ts file in prividers {provide HTTP_INTERCEPTORS, useClass:INterceptorname}
+-if we use multiple interceptor in that case need to use multi:true;
+
+login completed
+completed
+
+class-8
+-post login we will do dashboard
+-we have implimented html code from given team we have separated all code in footer, header, layout, sidebar, breadcrumb and post that we have given all the selectors inside layout accordingly
+ 	-we set logo for all as dynamic from ts file and feather icon we have implimented, then to display name and email id in sidebar 
+		we used local storage to get those details anyway we can receive from service as well.
+	-we sotred these values in fullName and emailId. we used JSON.parse as we are getting string data
+	-we set how to get profile image from api and implimented there.
+	-for show hide we have class open which is in scss.
+
+part1 completed
+
+part2
+-for show hide we will create a service because we need to apply a particular boolean value for header menu logo and for layout(sidebar) component so 2 component comes to the picture
+	so we will create service and will make it public so it can access for html page for header and laryout(sidebar). [class.open] = "service.booleanvariable"
+-now Sidebar menu list we will use from service which we created menu service.
+	-will make the sidebar dynamically and we will remove all manual data.
+	-will add routerLinkActive to display clicked link active color.
+part3 completed (issue with menu dropdown)
+
+class-9
+-issue with menu dropdown option resolved.
+-now will work on each component so starting from size component under masters and we have pasted theme and html, it have nav tabs and edit, delete, insert data etc.
+	-will create 5 variables inside size.component.ts addForm formgroup type we will bind that input field and will use validators also will create buttontext and dbops DbOperation type
+	-buttonText interpolation will bind so we can change as per requiremnt like edit then button should display Update if create then it should Add.
+	-dbops which operation performed we have already created its enum type DbOperation where we passed create, delete, update etc with number.
+	-for submit data we have create Submit() and inside we given switchcase.
+	-get ctrl() used to keep the control of form
+	-resetForm() and cancelForm() to reset the form in case of click cancel and post update the row.
+	-for table we will install the @swimlane/ngx-datatable from npm package
+	-we have created Edit() and Delete() with passing id and getData() to get the table data also this.addForm.patchValue() used to paste the value at the input field. patchvalue and setvalue we learned before
+	-ngOnDestroy used to update the table rows and row as null 
+	-for Delete() we used a confirm box by sweetalert2
+	-for validation we will use dynamic if there will be 10 input field for all if we will mention multiple div then it will large code
+		-for this we will create formErrors variable
+		-onValueChanges method called here and we did completely dynamic code for display error
+
+completed
+
+class-10
+-
+
+
+
+
+
+
