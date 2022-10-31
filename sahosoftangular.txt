@@ -92,9 +92,9 @@ nodejs and mongo express(to develop API)preferable
 -@angular/cli work is (when we crating a component or module all that inside coding part already done by angular cli, else we will face the proble to add all files manually so to manage angular cli npm need polyfile and broweser file
 -npm worlds largest software registry, 800000 code packages, it is open source, developers use to share software
 -how to crate a project?
-	use cmd - ng new filename then cd filename then ng serve (ng build --configuration production --base-href /trolley/)-in company this one is using.
+	use cmd - ng new filename then cd filename then ng serve 
 -Building the application
-	use cmd - ng build <project> only 5 file create after running the cmd (main.js, polyfiles.js, styles.js, runtime.js, vendor.js)
+	use cmd - ng build <project> only 5 file create after running the cmd (main.js, polyfiles.js, styles.js, runtime.js, vendor.js) (ng build --configuration production --base-href /trolley/)-in company this one is using.
 	main.js - the bulk of our angular application
 	runtime.js - contains all files(component, module, services, pipes etc) all functional files will go
 	polyfills.js - the things needed to let angular work in older browsers (it have zone.js library by which it will support all platform like google mozila, explore with all version)
