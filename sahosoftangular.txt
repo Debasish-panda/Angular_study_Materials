@@ -789,7 +789,49 @@ class-9
 completed
 
 class-10
--
+-ngx-datatable installed (in case any 3rd party package not able to install forcely in that case we can remove node_module and re install
+	-rows = objRows having data.
+	-will add canactivate AuthGuard in approuting.routing file for login.
+	-will update logintab by default post login only we can enter inside the webpage.
+	-in table we will bind name and createdon prop is the property we can bind the data and by name we can display someother name.
+	-for the edit and delete we created one column ngx-datatable-column and inside it ng-template and used ngx-datatable-cell-template
+	-to get the id of particular row for edit and delete we will set one variableat ng-template.
+	
+	-as like size we will create same table and input field for tag,color, usertype,catagory etc.
+	-tag, color we did same for brandlogo we need to create a filetype.
+		-for filetype no need to use formcontrolname and no need to mention inside formgroup.
+		-we will create a template variable name file and use change event will pass file.files everty technology it is same and we will receive it at formgroup as a string format
+		-now we will check is it image or not and we will check type as image or something else inside upload()
+		-match() is a js functin to check its same match.
+		-to display the image we will use FileReader to display at client side. by nativeelement we will empty the path of addimagepath then we will assign noimage value if anyone inputed  some other file isted of image
+		-we need to create formdata to send image and other values to the api and we have added the same formdata in api as well for brandlogo.
+			by debugger and in console we can not see the data which is inside formdata.
+		-we will create the same ng-template column to display the image in api it have imagePath which having value of image. that we have display.
+		-for image that post method is different postImage.
+
+completed
+
+class-11
+
+-catagory component also having fileupload system, so we will copy and paste same code from brandlogo.
+-inside category we will write code for form validation and bind as like brand logo
+-if there is a big form and in a single page we need to do crud operation as like above pages then it is little difficult to do so in that case we will split
+	the code in different component. ex is here we have done the code for Users inside, it have user list and add user.
+
+-Users 
+	-inside the module we will add ReactiveFormsModule and NgxDatatableModule 
+	-then we will use edit and delete operation for list user and here for edit option we will use router.navigate and will pass the id through query params to add-user component
+		there we will receive that id through ActivatedRoute.
+	-post that we will work on add-user component. we did registration that code we will copy and paste here and usertype we mentioned in master.
+	-for edit we will write code.
+
+	
+-if we installed anything forcely then further may create issue if we will install anything so in that case that particular thing we can remove from package.json file then we can made change and run npm install then we can instal that force wala package and ng serve at end.
+
+completed
+
+
+
 
 
 
