@@ -830,7 +830,15 @@ class-11
 
 completed
 
+class-12   -http://sahosoftweb.com/swagger/index.html(for api reference)
 
+-now we will do products by following users module and component.
+-this is having big form in add-products. will use the theme and then we will impliment our code. ngx-ckeditor we will use to edit the text in the browser itself.
+-post adding ngx-ckeditor we will do work on add-product component and we will add multiple forms and all the logic inside its ts file.
+	-we have implimented form validation, increment, decrement we added along with readonely added and image validation used select validation used etc.
+-see the code simple previouse things we did here as well.
+
+completed
 
 
 
