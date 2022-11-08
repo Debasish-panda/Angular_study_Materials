@@ -841,6 +841,31 @@ class-12   -http://sahosoftweb.com/swagger/index.html(for api reference)
 completed
 
 
+class-13
+-will work on setting module(will impliment reactiveformsmodule, ngbmodule)
+	-will impliment the theme from profile component and impliment here.
+	-we will copy same code from brandlogo component as we did the same code there.
+	-now we will add sweetalert2 for the confirmation to see immediatly changes.
+
+	-now we will add chart at dashboard page. (ng2-google-charts) along with it we will add angular-count-to and ng2-smart-table
+		-it have static and dynamic so in static anyone can do. Source format different for all.
+
+Need to check Dashboard part which video, now we will impliment only chart
+	
+-if one module import in more than one module in that case need to use CUSTOM_ELEMENTS_SCHEMA and then restart the ng serve
+-find out a particular column from a data we can use map method.
+	-let allDates = allData.map(item => item.date).filter((value, index, self) => self.indexOf(value) === index); //this one used to find the unique value in one array, filter used to remove the duplicate and map used to get the particular column
+	-filter having 3 parameter 1. value, 2. index and 3rd one is that array itself -self, indexOf return 1 or -1(true or false) , indexOf always provide 1st matching element index	
+ 
+-if we will get error that options undefined in that case we can use ngIf means if there is data then only bind it else not.
+-in Report also we will bind the same which we have done in dashboard that graph part
+
+completed
+
+profile component not working need to check
+
+
+
 
 
 
