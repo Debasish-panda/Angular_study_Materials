@@ -1,0 +1,208 @@
+C Sharp (C#)
+-C sharp developed by Microsoft having object oriented programing language.
+-mostly concept from java. Developed by Andres Hejlsberg when they developed .net.
+-it used to develop window application, mobile application, web application(using asp.net), game application(Unity).
+	-it always used in combination with .NET framework.
+	-it is having the capacity of language interoperability means it can interact with other programing language.
+
+.NET Framework
+-it is basically a collection of library which we can use by calling its class. It is easy to develop application.
+- if we want to use .net framework we need to use its programing language only other language will not support.
+¬
+CLR(common language runtime) in .net framework
+	-it is the foundation of the .net framework
+	-act as an execution engine for .net framework
+	-provide multi-language execution environment
+
+NameSpace – it is used to organize the code and is a collection of classes, interfaces, enums, delegates and structs.
+	-install visual studio then install .net framework create a new project.
+	Main(this is the entry point of the program)	
+	-using System we are using to implement a package or namespace which define in .net framework
+
+-if we do not want to use the namespace in that case we can use fully qualified name(fqn) ex – System.Console.WriteLine(‘hi world’); -to display
+-take input used ReadLine();
+-in c# console.WriteLine(“your name {0}”, name) placeholder syntax used mostly not concatenation.
+	If more than one variable need to print then index {0} {1} {2} like we can use
+
+Ctrl+k and ctrl+c used for comment multiple line, to uncommet use ctrl+k and ctrl+u.
+	
+	Built in Datatypes-
+		Integer Types – signed integer(positive and negative both value) and unsigned integer(only positive value) ex- age
+			-ex- byte, sbyte, int,uint, long, ulong and many more maxvalue and minvalue method to check limit.
+
+			-Bool for Boolean (true or false)
+			-floot(4bytes), double(8bytes), decimal(16bytes)
+			-string(multiple character used “ dev ”, use string) and character(single character at a time used ‘d’, use char)
+		Escape sequence - \n, \t, “ ”, ‘ ’, \\ etc.
+		Verbatin literal- it is not in all programing language use @ starting of the string it ignore escape sequence 
+				-ex - @”D:\main\program.ts ” 
+
+	DataType conversion (implicity and explicity)
+		-ex int to float implicity, float to int explicity (here value lose)
+		-by Convert.Toint32 we can change string, float to integer. Also parse we can use but helpful for string only.
+		-for float string we can use float.parse(string)  , “50adb”- this will through exception if we want to print in console.
+
+	Constant- value same for throughout the program.
+		-public const double PI=3.14d; we can create constant inside class or method
+		-constant we can declere all data type.
+		-constant comes under value types not reference type.
+		-identifier , variable, constant, class, function name is called identifier.
+
+	Date and Time Format specifier-
+		-date time format specifier (d, D, F, f, g) DateTime is a builtin class
+
+	Statements, Expressions, Operators
+		-c# program is a set of tasks that perform to achieve the overall functionality of the program
+		-to perform the tasks programmer provide instructions, these instruction are called statements.
+		-a c# statement can contain expressions that evaluates to a value.
+		-statements end with semicolon (ex – console.writeline(a+b);) , we use statement to build logical flow.
+
+		-arithmatic, relational, logical, bitwise, conditional, assignment, increment, decrement. Operator.
+
+		Ternary or conditional operators
+		-boolean expression ? first statement : second statement.
+		-precedence of operator(priority of operator like start from / * + -.
+		
+		Selection Construct or statement(If else)
+		
+Creating Marksheet Application
+	-here simple we will write code using console.writeline and console.readline to read and write in cmd.
+	-also we will do add sub, div, mul to get the result and its percentage. 
+	-we can use if else conditions to display in which subject person failed and passed etc we can use switch case also.
+
+Looping Statements(for loop, while loop, do while loop)
+	-for(int i=0; i>10; i++){} , while(5>i)
+Jump Statements(mostly used in for loop and while loop) it transfer control from one point in a program to another.
+	-ex – break, continue, goto, return
+	- if we will use break then that line will break and it will not iterate the for loop from the condition onward.
+	-if we will use continue then that particular part will not display where condition is true and skip for next iteration.
+	-in goto we need to use another label stop.
+
+Array(collection of elements(values) which store single data type only)
+	-int [] myArr = new int[3]; myArr[0]=11;
+	- myArr.Length return int value the length.
+	-Array name is known as identifier.
+	
+	-foreach(string item in names){} it will fetch the value and print directly
+	
+	Single dimensionl array and multi dimontional array
+	-[12,22,33] 1d array
+	-array inside array is 2d array.  myArr.GetLength(0) it is also called rectangle multi d array.
+		-jagged array int [][] myArr = new int [3][];  (3 represent as row and last one represent jagged)
+
+Methods or Functions	
+	-group of statements which perform a task is called methods or functions.
+	-user defined methods inside class need to made. Every program having Main method.
+	-if we want to fetch the user defined method then we have to make a object inside main method (className objName = new classname();)for it and we need to call the method in main method(objName.user Defined();).   This is called non static or instance method if we will use static keyword then it is static. For non static we have to create object.
+	-if we will create static method then for that we can call the method by class name itself.
+	-if we use void means there is no return type only print the value.
+	-after method (){}this is called as a method signature.
+	-parameterized method and non parameterized
+	-if we will set int, string, double etc instead of void then there must need to mention return  and in main class that one need to print.
+	
+Value type and reference type-
+	- Struct is a value type store in stack memory (instead of class we can use struct) (memory fill soon so will get exception stack overflow)(here different memory block assign )(we have to initialize the value)
+	- Class is a reference type store in heap memory  (here memory size is big and not fill soon so there is no exception)(single memory block assign so if we change the value anywhere then memory management happen)(no need to initialize when initialize)
+
+Pass by value and pass by reference(here we will use the keyword ref(address of a variable) and out)
+	-ref used to assign the address of a variable inside the function not only the value.
+		Ex- passbyRef(ref int a)
+	-out 
+		Ex-passbyValuse(out int a){ a=20}
+					
+Var and Dynamic keyword
+	-introduced 3.0 version.
+	-as like any in ts we can use var in .net it will take bool, string, int etc and its type decide during compile time. We have to initialize    .
+  when decleration. Variable type decide during compile time.
+	-var we can not use as a return type and argument type also. 
+	-it’s a value type.
+	-dynamic 4.0 version introduced.
+	-multiple type value we ca store. Variable type decide during run time. Initialization not required as like var. if we initialize as a number but later we changed it to string we will not get any error. Use GetType() to check the type of the variable.
+	-we can use in return type and function and argument also.
+	-dynamic keyword is reference type.
+
+
+Classes and Objects 
+	-c# program are composed of classes that represents method() or entities.
+	- object is a instance of a class.
+
+Constructor
+	-it is a special member function of a class that is executed when ever we create a new objects of that class.
+	-it no need to call as like object, same name of the class need to mention as constructor name. it has no return type. To use the construction same class instance need to create inside the method.
+
+	-2 type default type and parameterized
+	-default type we can not assign any parameter.
+	-construction having at least a single parameter which initialize the variable in class that is parameterized constructor.
+
+Constructor Overloading
+	-if we made more than one constructor is called constructor overloading.
+	-same type constructor we can not create if one is default type another should be parameterized type. If one taking 2 parameter another should be more than or less than 2 parameter or if it is int type argument then it should different type argument like that we can make constructor overloading.
+
+Static and Instance member of class
+	-instance member have a separate copy of each and every object of the class.	 Creating different instance of a class we can assign values. Static variable we can do which will common. Same static method can create.
+	-to create a static method or static variable need to use the keyword static which allocate a single memory space once.
+	-for static method no need to create object because it calls by class name.
+	-static method can use static variable only because instance variable depends on object so we can not use instance variable inside static method.
+
+Static Constructor
+	-it used to initialize static variable of the class and to perform a particular action only once. Static constructor called only once no matter how many object you have created.
+	-static constructor called before instance (default or parameterized) constructor.	
+	-it not use any parameter and any access modified.
+	-one static constructor can create in the class so it is not following constructor overloading concept.
+	-we can not call static constructor directly it done by compiler/CLR.
+
+Copy constructor
+	-the constructor which creates an object by copying variables from another object is called a copy constructor.
+
+Private constructor
+	-when a constructor is created with a private specifier, it is not possible for other classes to derive from this class, neither possible to create instance.
+
+Static Class
+	-static class can not be instantiated (can not inherit, can not create object) also static keyword used before class, also consist of static data members and static methods (any instance variable any instance method can not use). Static constructor can use.
+
+Destructors 
+	-it is a special method which has the same name as the class. As like constructor. But it start with the character ~ before the class name and immediately de-allocates memory of objects that are no longer required.  (destroy the memory of object when the object work is done)	-it can not be overload or inherited, it can not explicitly invoked, it can not take parameter and access modifier.
+	-ex – Person is a class where ~Person(){} it is the destructor.
+
+Inheritance in C Sharp
+	-the similarity in physical features of a child to that of its parents is due to the child having inherited these features from its parents.
+	-by it we can inherit the common attribute and methods from parent class.
+	- to use this we can use : instead of extend. 		In programing term parent is called Base class and child is Derived class.
+	- ex - class permanentEmploye :Employe{}
+
+Type of Inheritance
+	-single, hierarchical, multi level, multiple(using interface)
+	-single base class and single derived class called single inheritance.
+	-single base class multiple child class called hierarchical inheritance
+	- multi level inheritance is like A to B then B to C and so on where A is parent of B and B is parent of C.
+
+
+
+Constructor in Inheritance
+	-constructor of both classes must be executed when the object of child class is created.
+	- here automatic parent constructor call because there is keyword which set by the compiler at derived class that is : base()
+	-if we will use parameter in parent class then in that case only we need to use base() at derived class. Inside base we can use parameter.
+
+Access specifiers
+	-it use for class method and variables to define which can access the variables methods and classes.
+	- public, private(it is the default one which set automatic), protected, internal.
+	-public can accessible everywhere, private only with in the class, protected current class and derived class, outside the namespace but derived class, internal accessible for current and derived class not anywhere.
+
+Encapsulation
+	-it is the fundamental of c Sharp.
+	-it is a mechanism of wrapping the data(variables) and code acting on the data (methods or properties) together as a single unit. 
+	- in encapsulation the variables of a class will be hidden from other classes and can be accessed only through the methods or properties of their current class. So it is also known as data hiding.
+	-to achieve encapsulation in cSharp – declare the variable of a class as private,  provide public setter and getter method or properties to modify and view the variables value.
+	-benefit is the field of a class can be made as read only or write only, a class can have total control over what is stored in its fields.
+
+Properties in c Sharp
+	-properties are allow you to control the accessibility of a class variables. Set is a property and get is a property both used to set and get the value.
+	-4 type property 1.read/write, 2.read only, 3.write only, 4.auto implemented (public string firstname {get; set;} ) auto implemented we can make private public  also 
+	-if a class is static property then in that case no need to create its instance.
+
+Polymorphism in c Sharp (many-forms)
+	-it is a concept by which we can perform a single action by different ways. 2type 1. Static(compile time) polymorphism, 2. Dynamic(run time) polymorphism
+	-static polymorphism – the mechanism of linking a function with an object during compile time called static polymorphism.
+		- 2 technique method overloading(multiple function same name but must differ from each other, we can not differ only by retur type) and operator overloading(single operator will perform multiple task)
+
+Method hiding(it occurs in inheritance)
