@@ -305,6 +305,7 @@ Custom directives(out of 100% only 2% need by custom directive mostly custom dir
 -can use filter in ng-content by tag name, class name, id name, attribute name, for each tag name we need to mention different ng-content and if post filter we want to show alll we can simply use the ng-content tag, for id use #id and class .class, for attribute use [type], if multiple want use select='h1,h2'
 -@viewchild(), @viewchildren(), @contentchild(), @contentchildren() (these decorator we are using when we want to access following inside the parent component - 1.child component, 2.directive, 3.DOM element)
 - viewchild provide single instance (if we will use that instance insted of viewInit and ViewChecked if use in other lifecycle hook then in that need to give static true else will get error, if use costume method then no need to enter static true)
+	-@ViewChild(ChildComponent) childComponent!:ChildComponent;
 	-@ViewChild will go to its own html page and it will find is there any selector available for same component for which we have created
 	-it work with single selector
 -viewChildren for multiple selector it work, so need to use QueryList, also use forEach loop
