@@ -866,6 +866,13 @@ completed
 profile component not working need to check
 
 
+customerPortal class1
+-need to install multiple 3rd party packages.
+-themify icons used and all image file and theme file copy and pasted in project.
+-install bootstrap, ng-bootstrap@13.0.0 for angular 14 version, font-awesome, ngx-toastr, @angular/animations, ng5-slider(for select price range),  ngx-bar-rating(for rating)(import in css), ngx-infinite-scroll(scroll bar  infinite for 14 use 14.0.1), slick-carousel & ngx-slick-carousel(for image slide), jquery, smartmenus (responsive menu, need to add in angular.json ("node_modules/smartmenus/dist/jquery.smartmenus.js",)), node-sass(to manage scss file) (new version deprecated), ngx-translate/core and @ngx-translate/http-loader(translator)(need to do in key and value pair)
+-import browseranimationsmodule and toastrmodule.forroot()
+
+
 
 
 
