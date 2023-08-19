@@ -175,3 +175,385 @@ CRUD operations in mongoDB
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			STUDY MATERIAL UDEMY
+
+
+-Install nodejs from (nodejs.org) LTS version need to install (cmd - node -v)
+-What is node.js?
+	Previously js used only in browser, not able to do any work out of the browser. After Node.js we are able to create server side application, web api, command line application and many 	more.Nodejs is a JS runtime built on Chrome's V8 JS engine.
+	
+	JS is having window, document object so in node we have global, process (c++ use in both)
+-Why should i use Node.js?
+	Many company use node.js as a backend language for production like netflix, google etc.
+	It uses non-blocking I/O (allow a single process to serve multiple requests at the same time), event driven. blocking I/O is run very slow.
+	It is largest package ecosystem in world.
+-Create a .js file inside we can write console print and to run need use cmd node filename.js
+-Fundamental features of node.js
+	FileSystem is the basic fundamental which allows user to work with files in OS by node.
+	We can create read write delete files as per need
+	fs.writefileSync to write and create a file
+	-to use Filesystem need to import that can do by require('fs'); else it will throw error.
+	-fs.appendFileSync(it will add the data without removing previous data in same file)
+	-more we can see in nodejs document for filesystem.
+	-If we have another file which we want to read from another file in that case we need to import the same file in we want to call ex - app.js require('./utils.js'); (this require when we have 	complex project where need to place multiple code in separate file we can combine once)
+	-if we have a value at another file we want in our file in that case need to export that module then we can access in our own file ex module.exports = name;
+	-similarly we can call function as well
+
+	-We can import npm module to use its all features (first we need to initialize npm, second need 	to install all the modules which we will use)
+	-npm init cmd need to run then it will generate a package.json file where all dependencies will install
+	-npm init -y (default it will add everything and generate package.json)
+	-validator.js will install for the validation of string. By installing for the first time it will create node_modules and package-lock.json file. To use this package need to import. 
+	-validator.isEmail('abc@mail.com') if true return true else false similarly lot of method we can use.
+	- node is not use ES6 so we use require keyword to import, if support then we use import validator from '...' like this.
+	-if node_module remove in that case we can run npm install it will create node_module as like angular
+	-chalk is a library by which we can change the console color (npm i chalk@4.1.0)
+
+	-Now we will learn global npm package use in application(Nodemon)
+	-Nodemon install globally (npm i nodemon -g) then run nodemon app.js it will run as like angular
+
+File System and command line arguments
+	-Getting input from user
+	-to get the input from the user we can use process.argv ex - surppose user run node app.js Debasish so to print debasish we can use process in console so we will get the value.  (console.log(process.argv);)
+
+Argument parsing with yargs
+	-yargs is a package used to build interactive command line tools, by parsing arguments and generating an elegant user interface. it is similar to process.argv  (console.log(yargs.argv);
+	-by yargs we can add, remove, read, list (we can create add command)
+			yargs.command({
+    				command: 'add',
+   				 describe: 'Add a new note',
+   				 handler: function(){
+      				  console.log('Adding a new note!!')
+ 			   }
+			})
+		then we can run the cmd node app.js --help it will display the output
+		similarly we can do remove read and list, and we can run ex - (node app.js list) by this it will execute that command
+	-we can pass parameter in function but we need to add a builder object which will carry title and describe as like previous.
+				yargs.command({
+   						 command: 'add',
+					    describe: 'Add a new note',
+  						  builder: {
+      						  title:{
+       						     describe:'Note title',
+							demandOption:true,
+							type: 'string'
+       							 }
+   						 },
+  				  handler: function(argv){
+   				     console.log('Adding a new note!!', argv)
+   					 }
+				})
+		if demandOption is true then we have to pass the title in cmd else get error.
+		type if we set we have to send same type data in cmd.
+		-yargs.parse(); //this we can use insted of console below. not required yargs.argv in console
+		in above console we can pring argv.title so it will pring only title part in array
+		-as like title we can create body and that we can console
+
+Storing data with JSON
+	-We can create a object and that we can convert into string and store in .json file which will store as json object format. from that file we can access accordingly.
+	-by fs we can create and read the same json data.
+	object -> JSON.stringify() -> store in json ->readFileSync(byte format) dataBuffer -> dataBuffer.toString() ->JSON.parse()
+
+Adding a note
+	-will create another folder named notes and will create notes.js file inside that we will create method to read and get note data.
+	-by giving function we will generate file and inside content also will add data from cmd by yrgv.
+	-so will do the program where multiple time we run it will push in the new file as array of objects.
+	-in this one we learned how to add notes in a new json file and will push objects format in array and we can remove the same notes, if duplicate is there we can display message also. we have used filter method, fs to create and read file data and chalk to display color background of console.
+
+Arrow function ES6
+	- ()=>{} this is basically arrow function so if we are calling the arrow function inside an object it will not allow this keyword to access its upper data so there we can use arrow function which will allow to access data.
+	-above all the function where we can use arrow function to reduce the code.
+
+Listing Notes
+	-we can list the title of all the notes, also we can read a note title and its body as we have done in the code.
+
+Debugging nodejs application
+	-basically we face 2 types of error when we work with nodejs (explicity errors(will get in console) and logic error (will not get message) )
+	-console.log is a basic tool by which we can debug for the basic level.
+	-debugger is a option by which we can debug the code step by step, for this we need to add inspect / --inspect-brk in cmd
+	ex - node inspect app.js.	That we can see in chrome browser as it is using defult chrome v8. need to write in chrome 	chrome://inspect
+	-in chrome we can see as like angular debug option.
+	- Error message having information where is the exact error.
+
+Asynchronous Nodejs(non-blocking, single threaded and event driven)
+	-it is running asynchoronously (if we have multiple block with set timeout then it will execute all then timeout function will execute, it will not wait for the settimeout block at the end it will execute)
+
+Http Request -
+	-	https://weatherstack.com/ (this is a free api we can use for weather condition) need to signup here then we will get api access key(8cf78b463a4dccfca6ef49cda44bf3a0) that we can use 
+	-request is a npm library by which we can manage http request in nodejs (it is deprecated but we can use postman-request)
+	-here we can pass url and its response error we can catch.
+	-near url we can use json:true so return will be json type
+	-error need to handle (we can do simplly if else condition)
+	-mapbox.com (used for geocoding)(latitude longitude map)
+
+	-callback function it is important to learn. (play arround callback function by settimeout or by variable)
+	-callback abstraction (inside callback we can call again one more callback and so on)
+	-callback chaining (will call one callback and its value we will use inside one callback and so on it is chaining)
+	-destructuring (it is a method of JS by which we can fetch the properties of an object directly by assigning)
+	
+	-HTTP request without any library(means without request library)
+
+Web servers(Express)
+	-To install express use (npm i express)
+	-then to use express we will require this one and we will store that express as a method inside app (const app = express())
+	-app.get('', ()) it take 2 argument 1st is route and callback function. and the callback function take  2 argument res and req
+	-app.listen(3000) it allow to view in local machine also other argument we can give like callback
+	-by res.send we can send html as well as json
+	-we can create separate file for html, css that we can display in localhost by express
+	-node provide __dirname and __filename (to know the absolute path)
+	-path we can import in our project it is with node by it we can navigate to desired file
+	-express.static() take path as argument it will take to that particular file which we want to serve up use inside app.use(express.static(path)) this will display in screen 
+	-static way we can connect html, css and js by link and script tag we can connect css and js with html
+
+	Dynamic pages with templating(will learn dynamic template engine)
+	- to do this we have 2 very popular npm package (handlebars)2nd is hbs which is easy to use in background it runs handlebars.
+	-to use this we have to do app.set('view engine', 'hbs') to tell the express. here 1st argument is setting name and next package name
+	-so hbs will look for a specific folder named views so we will create one folder named views in root
+	-inside the views we can create index.html but we insted of html need to use .hbs extension.
+	-we can delete that public folder as static way we will not bind now onwards everything will be hbs handle
+	-as usual we will use app.get but insted of res.send we will use res.render which allows to render our views inside argument we need to pass the only filename without extension. 
+
+	-for hbs also we want path.join for views folder
+	-in expressjs.com document we can read more about it (express(), application, request, response and router) 
+
+	Partial handlebars
+	-for this we will create 2 folder inside template folder one will be views and another is partials
+	-partials we use to bind data dynamic with html, partials is not whole html format with body head tag it carry just h tag, p tag etc. to display partial use {{>partial file name}} same a tag we can give to navigate path need to provide
+	-nodemon app.js only watch app.js not others to watch others we run (nodemon app.js -e js,hbs, other file extension name)
+
+	-will add a 404 page if user request a page which not exist. at the end we will add.
+	-so here wildcard is single star *.
+
+API endpoints 
+	-Query string always pass in url as a value and key pairs after ? this mark ex - (lcoalhost:3000/product?search=abc&rating=5) we need to in req parameter it is having req.query.
+	-JSON Http endpoint (will get json data in response, when api calls)
+	-we can not destructure undefined value (ES6 update of js)
+	-by fetch method we can fetch the data from api url.
+
+Application Deployment (git, github and heroku)
+	-git is a version control platform we have to install it and we can use from vs code editor
+		-we need to do git init to initial a local git folder which can track each code.
+		-git init (create empty git repo)
+		-git add . (it will add a change in the working directory to the staging area)
+		-git commit -m "type message" (it used to create a snapshot of the staged changes along a timeline of a Git projects history)
+	-if we made any changes in code then that will be orange color so git is tracking files then we need to push in git repo
+		-cmd is direct we can do   - git add .
+							- git commit -m "changes message"
+	-heroku is a site where we can host our code and globally we can fetch. (so it require git also for version control)	
+	-ssh key is required for a secure communication
+		-in git bash we need to run the cmd  - ls -a -l ~/.ssh (ls will list all file folder, -a will list all hidden file directroy, -l will list all inside files in column and ~this is for user directory and /.ssh which folder we are looking)
+		-if there is no ssh key exist we will get error or it will throw not exist in that case we need to generate ssh key.
+		-cmd is 	-ssh-keygen -t rsa -b 4096 -C "pdebasish540@gmail.com" (-t stands for type, rsa- it is a secure protocol, -b stands for bits 4096 is bit, -C comment we can provide as email id)
+			-it will ask for few questions
+			-2 file will generate (id_rsa which will be in our machine which is secure another is id_rsa.pub - it is a public file which can share in heroku and git)
+		-eval $(ssh-agent -s) this cmd will start a ssh agent if it is already running it will tell the process id. 
+		-if pid is there the register the file
+		-to add cmd - ssh-add ~/.ssh/id_rsa (to add) will get output as identity added
+	-now we will push the code in github for that we will create one new repository
+		-we have already pushed in our local repo so we will jsut connect one remote one and will push there.
+		-cmd - git remote add origin http:/github.git (remote - a version of your project pushed somewhere else by remote) (add- to add in remote, also we can use remove to remove it) (origin - it is just a name of the remote it can be anything but standard follow origin itself) (at last we have url which have username and repo name)
+		-git push -u origin main (origin is the remote name) (master is the defult branch) (-u set the default upstream) (previously it was master but now it is main)
+		-by using push cmd it will not take so we need to use the ssh key
+		-to get the content of ssh key use the cmd - cat ~/.ssh/id_rsa.pub . here we will get the key and same we will paste in github page that will save the information.
+		-now we need to test it is working or not by cmd - ssh -T git@github.com (this is going to test ssh key with giuthub server) it will ask for yes/no/fingerprint we can put yes
+	-this set up is only for once we can use for our future projects also
+	-now we can use - git push -u origin master (to push in github)
+
+	-Now we will deploying node.js to heroku (git bash from vs code terminal will do)
+		-we have simple cmd i.e - heroku keys:add (it will ask which file we can enter yes)
+		-after success will create project by cmd - heroku create project-name (need to give creditcard )
+	-3 topic pending here for heroku
+
+
+MongoDb and Promises
+	-Need to install will do later
+
+REST API's and mongoose(mongoosejs.com doc we can follow)
+	- npm i mongoose (will use to do communication with db)
+	-const mongoose = require('mongoose')
+		mongoose.connect('mongodb://localhost:27017/udemy-rest-api', {
+   			 // useNewUrlParser:true // this is not supporting only url is enough to do connection
+    			// useCreateIndex:true  //this is not supporting only url is enough to do connection
+		})
+	-basically we will create one model and we will use the field name and its type and validation we can add, then we will use construtor by new keywork and will assign value then will assign to another variable. later we will do that variable.save() so it will return one promiss that we will get by then if it is resolved else catch if it have error.
+
+Data validation and sanitization (sanitization means change the data ex - lowercase, uppercase)
+	-Validation need to use so that if any required field and other kindly of validation. (required:true)
+	-for number we have min and max 
+	-we can do custom validation by using validate(){} method (this method is from mongoose)
+	-mongoose have no much more validation so we will install validator through npm
+		npm i validator (it is having a lot of validation options)
+	-post installation will use validatior as require then will validation one emial, it is having own method isEmail(email id) it will return true or false by validation.
+	- trim we can set true so it will trim the space, we can set default value something, we can set lowercase:true
+
+Structuring a REST API
+	-REST - representational state transfer, api - application programing interface
+	- CRUD operation happen - create, read, update, delete
+	-in request we send something in header (POST /task http/1/1, accept: application/json, authorization : Bearer token, )
+
+Resource Creation Endpoints: Part1
+	-will install nodemon and express.
+	-in script tag of package.json we can set which one to run 
+		 "scripts": {
+   			 "start": "node src/index.js",
+   			 "dev": "nodemon src/index.js"
+		  },
+	-now we can run in cmd - npm run dev or npm run start
+	-we can do a post request and inside we can pass the url and we can run in postman
+	-but to receive postman passed object to save in db that we can receive by using - app.use(express.json()), by this we can fetch the json data as req.body.
+	-now we will create another models folder inside we will create model where we will create model and its validation that we will export.
+	-now we can do the user.save().then().catch() it will save data in mongodb as mongoose is in model and database.
+	-res.send() also we can send the status code as default one is 200 so we can do res.status(201).send(user)
+	-for error we need to send propr status code (we can refer httpstatus.com)
+	-similarly we will do get method we have Model.find({search string or empty object}) it will fetch whole data from db it is predefined method of mongoose.
+	-same getbyid we can do the url will use '/user/:id' and the parameters we can receive by req.params. we have findById() and findOne() by which we can find our record
+	
+	Promise chaining
+		-basically inside promise we will do again one more promise again one more promise and so on in this way catch part also will add multiple time so to avoid this we will use promise chain this can be done like below code
+	promisechain - abc(1,2).then(return abc(3,4)).then().then().catch() return statement is need that particular method
+	without promise chaain - abc(1,2).then( abc(2,5).then().catch).catch
+	-we have done the put method and delete method similar like get method
+
+	Async/Await (playground dir)
+		-async function always return a promise, and that promise carry the value which function return. we can fetch that one by  .then().catch()
+		-if we send some data we can get in .then() if we throw new Error something we will get in catch
+		-so its better to use await in async which will be much more easier. 
+		-if async await somewhare it fails then it stop execution
+		-now we will change our previous code of get, post to async and await and will follow the same.
+		-in the same url we will do async(req, res) =>{} inside that if we reutnr something then it will be an promise type 
+		 that await one we can call inside a try catch block.
+
+		-Now we will create a patch method to update in database and it can be done by findByIdAndUpdate() inside params id is required to pass and what need to update. so we can get from req.body and other parameter like {new:true, runValidators:true}(this part basically validating what we are updating)
+		-if we will update some property which not exist mongoose will ignore and send 200 code but we can restrict the same by doing some manual code.
+		-by async and await we will create delete method also
+
+	Separete Route Files
+		-if we will keep all method all api in a single file it will be huge so its bettere to make separate files so we can easily track
+		-to do this we need to do some code in particular file (new express.Router())
+		-will create another folder as router inside we will do all stuff like will create user.js file inside will do call Router and then in index.js need to call app.use(userRouter)
+		-similar way we can create multiple router for different different module and can call in index.js file
+
+API Authentication and Security
+	-password we should not store as it is in the db so we need to encrypt and then store it.
+		we have bcryptjs library which store by do encryption
+	-we can encrypt the password with hash and it can not be reversable
+	- to save the hashpassword in db we need to change something in model then only by update and by saving it will store hashpassword in db
+	-we need to create one schema of mongoose and then that schema assign to model
+	-before that we need to do userSchema.pre()for saving then when we save just before saving that schema will call and run the code as we want
+	-so that schema.pre() is a middleware  and for saving it is calling the middle ware but for update it is not calling cause in patch method we have done findByIdAndUpdate which interact with db directly so we need to change the code
+
+	-Now we will create one logging in user in users one itself so for that we will create on method in model and that we will call from controllser by schema.statics.methodname (statics method accessable in the modal, sometime called modal methods)
+	-as like id are unique email and mobile number should be unique so by the same email others can not login so for that we have unique: true property which we can make inside schema. it will work but need to clear db and create again.
+
+JSON Web token
+	-npm i jsonwebtoken we will install it to use jwt
+	-will require then we will use jwt.sign() it take 2 parameter ( 1st take object (contain data of unique identifier for the user it can id) 2nd take string (it is taking secrect)) 3rd argument i can give token expire time
+	-token made of 3 distinct part separated by .(period) 1st - base64 json encoded string(header), 2nd - payload or body(base64 json encoded string) it contain id which we have given for the 1st parameter, 3rd - signature(to varify the token)
+	-jwt.verify() use to verify the token it have 2 parameter 1st the same token 2nd the same secret (if secrect will not match it will throw error)
+
+Generating Authentication Token
+	-so for that we will create one method in named generateAuthToken() inside user.js by using schema.methods.generateAuthToken (methods are accessable in the instances, somethime called instance method)
+	-will import jwt from jsonwebtoken.
+	-we have to keep a track for the token, then only user can login through multiple devices and if one logout others will be still login, so to do this we will add another new field in modal that is token as a array.
+	-then we will save in db that will do inside generateAuthToken()
+	-we can also do when a user signup for the first time we can assign a token to the user and can display to the user.
+
+Express MiddleWare (work flow is (new request => middleware => run route handler))
+	-will work inside main index.js file some js code, code should be before calling the routes
+	-so if we set some middleware in that case we have to place next() then only it will go for the route handler.
+
+Accepting Authentication Tokens
+	-Its better to create another folder for middleware for the authentication token
+	-after that we will create one js file inside it here we will do work on middleware, to use it we will import inside controller so where ever we want to add the middleware we can appy it 
+		ex - if it is a get method after the route parameter we can add auth (router.get('/users/', auth, async(res, req){}))
+	-user basically pass the token through header by Authorization Bearer token. in middleware we will validate that one then we will navigate to router
+	-so now we will do try catch and by req.header('Authorization') we will get bearer token then will remove that Bearer by replace method.
+	-will decode the token by using jwt.verify(), then will find inside User modal then will send the same.
+	-so by this method user will get only his profile not whole array. the same will change in controller
+
+Advanced Postman
+	-we can add few features in postman to do automate the apis like we can create the environment, we can create the collections, we can set the authorization token for all by going to the particular collection option, we can write script to set token after login etc.
+	
+Logging Out
+	- for this we will create one router handler. also if a user logged in 3 device if logout from one we should not logout from others as well.
+	-LogoutAll - this route is for if multiple device loggedin at a single time we can logout all.
+
+Hiding Private Data
+	-previously we used to send whole user data when user login we should not to share whole data we have to send needed data only.
+	-so we will create other method named getPublicProfile by using userSchema.methods.getPublicProfile
+	-inside this one we will use mongoose method toObject() to simply convert as object, delete is just delete an item
+	-insted of creating getPublicProfile we can simply mention as toJSON it will work as it is also no need to call in controller
+	-how toJSON work - when ever we are sending something internally it is converting as JSON.stringify(). so we are calling toJSON means default we are returning something inside it so the same is overriding and reflecting in response for everytime when we call an api relevent to the controller
+
+Authentication user endpoints
+	-this is to ensure all the endpoints are correct if any issue is there do testing and fix.
+
+User/Task Relationship
+	-for this we will just create task modal and will establish relation between user and task.
+	-here will just add one field for task is owner or the creator. To do from mongoose it self we will add the objectId
+	- then we will drop the whole db again we will register a user then we can run the task post method it will have owner id
+	-now we have only owner id and if we want to fetch the complete user info then we can use ref and user modal name 
+			ex = ref : 'User'
+		will do in index.html for the testing
+		task.populate('owner') // this line will find the owner in the task modal and whole data reflect
+	-similarly we will fetch the user by the task to do this we will create a virtual in user module
+			userSchema.virtual('tasks',{
+    				ref: 'Task',
+				localField: '_id',
+    				foreignField: 'owner'
+			}) 		//this is for mongoose to figureout how user relate to task 
+		similar way need to populate
+	-to get the task which created by the user for the same user will create one route to fetch the data.
+	-When user remove, relevent tasks should remove for that we will create middleware in user modal by userSchema.pre() for the remove method, without middleware in delete route code of usercontroller we can do but creating middleware in user is the approached way.
+
+Sorting, Pagination, Filtering
+	-Working with Timestamps
+		-In user Schema we can give timestamps as a object {timestapms: true } default false it is.
+		-to do timestamps we have to create a schema like mongoose.Schema() not a modal that schema we can pass in modal
+	-Filtering Data
+		-here by query string we will get the value from url and then we will find the same data then we will populate the whole data, also if in query string it is empty in that case it should throw whole data
+		-what ever we are getting in query string it will be a string we have to convert accordingly
+	-Paggination
+		-2 thing need limit and skip (data numbers - limit, skip- page size like page 1 page 2 etc)
+		-we need to give option:{ limit : parseInt(req.query.limit), skip : parseInt(req.query.skip) }
+	-Sorting Data
+		-we can sort by column_name - ascending, descending (for descending -1 and for ascending 1)
+		-so there will be : or _ we have to segregate accordingly
+
+File Upload
+	-multer used for file upload (npm i multer) multipart/form-data
+	-multer({dest: 'file'}) (this one need to give as a destination name)
+Validating file uploads
+	- limits: { fileSize: 1000000 } inside multer we can give
+	- fileFilter(req, file, cb) { cb(new Error("File must be image"))}
+		-file.originalname.endsWith('.pdf') (here we need to put regEx insted of .pdf) in the case of regEx we need to use match insted of endsWith
+Error Handle
+	- to send exact error to the FE guy we have to use another callback after the http call (error, req, res, next) =>{} must 4 parameter (for multer)
+Add image to User profile
+	-will add auth middleware before the multer middleware and then will add image in user modal we will store as binary, but here dest is not required directly we will save the bindary in DB.
+Get image router
+	- we need to create get method for get the image for user by id
+Resize and change image type by sharp
+	-npm i sharp
+	- sharp(req.file.buffer).resize({width: 250 , height: 250}).png().toBuffer() (this one basically for resize image and convert png to buffer)
+
+Sending Emails
+
+
+
+
